@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Synth skin for RapIDE -->
+
+<synth>
+
+    <!-- Style For Text Area -->
+
+    <style id="Text Area">
+
+        <font name="Courier New" size="14"/>
+
+            <state>
+
+                <color type="BACKGROUND" value="#4C4C4C"/>
+
+            </state>
+
+    </style>
+    <bind style="Text Area" type="region" key="TextArea"/>
+
+</synth>

@@ -1,0 +1,173 @@
+package frames;
+
+import handlers.FileDeleterMIH;
+import handlers.SavingMIH;
+import keyBindings.HookKB;
+import keyBindings.SavingKB;
+import handlers.FileNameMIH;
+import handlers.SoundsLikeMIH;
+
+import javax.swing.*;
+import java.awt.*;
+
+import static logic.FolderCreator.createFolders;
+
+/*
+ * Created by Jonah on 7/2/2015.
+ */
+
+public class MainFrame extends JFrame
+{
+
+    //Declarations
+    private JPanel mPanel;
+
+    private JList<String> rhymeListDisplay;
+
+    public static JTextArea mTextArea;
+
+    private JMenuBar mMenuBar;
+    public static JMenu mFileName;
+    public static JMenu mSoundsLike;
+    public static JMenu mFileDeleter;
+    public static JMenu mSave;
+
+    public static DefaultListModel<String> rhymeList;
+
+    private JSeparator lsSeparator;
+
+    public JScrollPane slScrollPane;
+
+    public static Color mpColor = new Color(88, 88, 88);
+
+    public static String[] rhymes = {"Press", "The", "Sounds", "Like", "Button", "To", "Search", "For", "List",
+                                     "Of", "Words", "That", "Sound", "Similar", "To", "Each", "Other"};
+
+    public MainFrame()
+
+    {
+
+        //New Stuff
+        mPanel = new JPanel();
+
+        mTextArea = new JTextArea();
+
+        mMenuBar = new JMenuBar();
+
+        mFileName = new JMenu("File Name");
+        mSoundsLike = new JMenu("Sounds Like");
+        mFileDeleter = new JMenu("Delete Files");
+        mSave = new JMenu("Save");
+
+        rhymeList = new DefaultListModel<>();
+        rhymeListDisplay = new JList<>(rhymeList);
+
+        lsSeparator = new JSeparator();
+
+        slScrollPane = new JScrollPane(rhymeListDisplay);
+
+        //Function Calls
+        createFolders();
+        lookAndFeel();
+        createView();
+        FileNameMIH.FNMIH();
+        SoundsLikeMIH.SLMIH();
+        FileDeleterMIH.FDMIH();
+        SavingMIH.SMIH();
+        HookKB.hookBinding();
+        SavingKB.savingBinding();
+        setInitialRList();
+
+        SwingUtilities.invokeLater(FileLoaderFrame::new);
+
+    }
+
+    private void createView()
+    {
+
+        //Main Frame
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        setExtendedState(Frame.MAXIMIZED_BOTH);
+        setLocationRelativeTo(null);
+        setTitle("Rap IDE");
+
+        //Main Panel
+        mPanel.setBackground(mpColor);
+        mPanel.setLayout(new BorderLayout(5, 5));
+
+        //Add Everything
+        getContentPane().add(mPanel);
+
+        mPanel.add(mMenuBar, BorderLayout.PAGE_START);
+        mPanel.add(mTextArea, BorderLayout.CENTER);
+        mPanel.add(lsSeparator, BorderLayout.LINE_START);
+        mPanel.add(slScrollPane, BorderLayout.LINE_END);
+
+        mMenuBar.add(mFileDeleter);
+        mMenuBar.add(mFileName);
+        mMenuBar.add(mSoundsLike);
+        mMenuBar.add(mSave);
+
+        //TextArea Shenanigans
+        mTextArea.setLineWrap(true);
+        mTextArea.setWrapStyleWord(true);
+        mTextArea.setBackground(mpColor);
+        mTextArea.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+
+        //RhymeList Shenanigans
+        rhymeListDisplay.setFixedCellWidth(100);
+        rhymeListDisplay.setFixedCellHeight(30);
+        rhymeListDisplay.setFont(new Font("Courier New", Font.PLAIN, 15));
+        //rhymeListDisplay.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+
+        //slScrollPane Shenanigans
+        slScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        slScrollPane.setBorder(null);
+
+        lsSeparator.setOrientation(SwingConstants.VERTICAL);
+
+        pack();
+        setVisible(true);
+    }
+
+    public static void setInitialRList()
+    {
+
+        for(String h : rhymes)
+        {
+            rhymeList.addElement(h);
+        }
+
+    }
+
+    private static void lookAndFeel()
+    {
+
+        /*SynthLookAndFeel laf = new SynthLookAndFeel();
+        try
+        {
+            laf.load(MainFrame.class.getResourceAsStream("SynthLAF.RapIDE.xml"), MainFrame.class);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        try
+        {
+            UIManager.setLookAndFeel(laf);
+        }
+        catch (UnsupportedLookAndFeelException e)
+        {
+            e.printStackTrace();
+        }*/
+
+    }
+
+    public static void main(String[] args)
+    {
+
+        SwingUtilities.invokeLater(MainFrame::new);
+
+    }
+
+}
