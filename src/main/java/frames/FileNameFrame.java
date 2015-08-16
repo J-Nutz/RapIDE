@@ -6,6 +6,8 @@ package frames;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import static logic.Saving.saveFile;
@@ -24,7 +26,7 @@ public class FileNameFrame extends JFrame
         accept = new JButton("Name File");
         cancel = new JButton("Cancel");
 
-        fileNameTF = new JTextField(" Enter File Name ");
+        fileNameTF = new JTextField("Enter File Name");
 
         mFNFPanel = new JPanel();
 
@@ -37,8 +39,7 @@ public class FileNameFrame extends JFrame
     {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setTitle("File Namer");
-        setSize(200, 100);
+        setSize(185, 100);
         setResizable(false);
         getContentPane().add(mFNFPanel);
 
@@ -59,6 +60,14 @@ public class FileNameFrame extends JFrame
         accept.addActionListener(e -> {
 
             FileName = fileNameTF.getText();
+
+            String bannedChars = "/:*?<>|";
+            char[] ca = bannedChars.toCharArray();
+            for (char c : ca)
+            {
+                FileName = FileName.replace("" + c, "");
+            }
+
             fileNameTF.setText(FileName);
 
             try

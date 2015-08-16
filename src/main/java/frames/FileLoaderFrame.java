@@ -27,7 +27,7 @@ public class FileLoaderFrame extends JFrame
 
         savesComboBox = new JComboBox<>();
 
-        accept = new JButton("Accept");
+        accept = new JButton("Load File");
         createNew = new JButton("Create New");
 
         FLFCreateView();

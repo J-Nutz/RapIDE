@@ -36,8 +36,7 @@ public class SoundsLikeFrame extends JFrame
     {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setTitle("Sounds Like Getter");
-        setSize(200, 100);
+        setSize(210, 100);
         setResizable(false);
         getContentPane().add(mSLFPanel);
 

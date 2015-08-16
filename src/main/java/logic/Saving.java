@@ -35,7 +35,6 @@ public class Saving extends MainFrame
             FileWriter mFileWriter = new FileWriter(new File(fileDirectory, FileNameFrame.FileName));
             mFileWriter.write(mTextArea.getText());
             mFileWriter.close();
-
         }
     }
 }
