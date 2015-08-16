@@ -8,7 +8,6 @@ import java.io.File;
 
 public class FileDeleterFrame extends JFrame
 {
-
     public static JComboBox<Object> savesComboBox;
 
     private JPanel mFLFPanel;
@@ -18,7 +17,6 @@ public class FileDeleterFrame extends JFrame
 
     public FileDeleterFrame()
     {
-
         mFLFPanel = new JPanel();
 
         savesComboBox = new JComboBox<>();
@@ -35,7 +33,6 @@ public class FileDeleterFrame extends JFrame
 
     public void FLFCreateView()
     {
-
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("File Deleter");
@@ -70,9 +67,9 @@ public class FileDeleterFrame extends JFrame
                     System.out.println(selectedSave + " File Deleted");
 
                     SwingUtilities.invokeLater(FileLoaderFrame::new);
-
                 }
-            } catch(Exception de)
+            }
+            catch(Exception de)
             {
                 System.out.println("Error: " + de);
             }
@@ -87,9 +84,7 @@ public class FileDeleterFrame extends JFrame
 
     public void cancelActionListener()
     {
-
         cancel.addActionListener(e -> dispose());
-
     }
 
     public void setSavesComboBox()
@@ -120,9 +115,7 @@ public class FileDeleterFrame extends JFrame
 
         if(savesComboBox.getItemCount() == 0)
         {
-
             dispose();
-
         }
     }
 }

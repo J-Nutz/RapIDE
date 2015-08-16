@@ -1,4 +1,4 @@
-package handlers;
+package handlers.menuItems;
 
 /*
  * Created by Jonah on 7/28/2015.
@@ -13,23 +13,17 @@ import javax.swing.event.MenuListener;
 
 public class SoundsLikeMIH
 {
-
     public static void SLMIH()
     {
-
         MainFrame.mSoundsLike.addMenuListener(new SampleMenuListener());
-
     }
 
     public static class SampleMenuListener implements MenuListener
     {
-
         @Override
         public void menuSelected(MenuEvent e)
         {
-
             SwingUtilities.invokeLater(SoundsLikeFrame::new);
-
         }
 
         @Override
@@ -44,5 +38,4 @@ public class SoundsLikeMIH
 
         }
     }
-
 }

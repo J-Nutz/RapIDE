@@ -12,7 +12,6 @@ import java.io.File;
 
 public class FileLoaderFrame extends JFrame
 {
-
     public static JComboBox<Object> savesComboBox;
 
     public static String selectedSave;
@@ -24,7 +23,6 @@ public class FileLoaderFrame extends JFrame
 
     public FileLoaderFrame()
     {
-
         mFLFPanel = new JPanel();
 
         savesComboBox = new JComboBox<>();
@@ -42,7 +40,6 @@ public class FileLoaderFrame extends JFrame
 
     public void FLFCreateView()
     {
-
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("File Loader");
@@ -70,12 +67,10 @@ public class FileLoaderFrame extends JFrame
             dispose();
 
         });
-
     }
 
     public void createNewActionListener()
     {
-
         createNew.addActionListener(e -> {
 
             dispose();
@@ -83,7 +78,6 @@ public class FileLoaderFrame extends JFrame
             SwingUtilities.invokeLater(FileNameFrame::new);
 
         });
-
     }
 
     public void setSavesComboBox()
@@ -115,11 +109,9 @@ public class FileLoaderFrame extends JFrame
 
         if(savesComboBox.getItemCount() == 0)
         {
-
             dispose();
 
             SwingUtilities.invokeLater(FileNameFrame::new);
-
         }
     }
 }

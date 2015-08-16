@@ -1,35 +1,35 @@
-package handlers;
+package handlers.menuItems;
 
 /*
- * Created by Jonah on 7/23/2015.
+ * Created by Jonah on 8/3/2015.
  */
 
-import frames.FileNameFrame;
-import frames.MainFrame;
+import logic.Saving;
 
-import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+import java.io.IOException;
 
-public class FileNameMIH extends MainFrame
+public class SavingMIH extends Saving
 {
-
-    public static void FNMIH()
+    public static void SMIH()
     {
-
-        mFileName.addMenuListener(new SampleMenuListener());
-
+        mSave.addMenuListener(new SampleMenuListener());
     }
 
     public static class SampleMenuListener implements MenuListener
     {
-
         @Override
         public void menuSelected(MenuEvent e)
         {
-
-            SwingUtilities.invokeLater(FileNameFrame::new);
-
+            try
+            {
+                saveFile();
+            }
+            catch(IOException e1)
+            {
+                e1.printStackTrace();
+            }
         }
 
         @Override

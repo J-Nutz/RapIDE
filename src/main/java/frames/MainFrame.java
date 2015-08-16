@@ -1,11 +1,11 @@
 package frames;
 
-import handlers.FileDeleterMIH;
-import handlers.SavingMIH;
+import handlers.menuItems.FileDeleterMIH;
+import handlers.menuItems.SavingMIH;
 import keyBindings.HookKB;
 import keyBindings.SavingKB;
-import handlers.FileNameMIH;
-import handlers.SoundsLikeMIH;
+import handlers.menuItems.FileNameMIH;
+import handlers.menuItems.SoundsLikeMIH;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,7 +18,6 @@ import static logic.FolderCreator.createFolders;
 
 public class MainFrame extends JFrame
 {
-
     //Declarations
     private JPanel mPanel;
 
@@ -34,8 +33,6 @@ public class MainFrame extends JFrame
 
     public static DefaultListModel<String> rhymeList;
 
-    private JSeparator lsSeparator;
-
     public JScrollPane slScrollPane;
 
     public static Color mpColor = new Color(88, 88, 88);
@@ -44,9 +41,7 @@ public class MainFrame extends JFrame
                                      "Of", "Words", "That", "Sound", "Similar", "To", "Each", "Other"};
 
     public MainFrame()
-
     {
-
         //New Stuff
         mPanel = new JPanel();
 
@@ -62,29 +57,31 @@ public class MainFrame extends JFrame
         rhymeList = new DefaultListModel<>();
         rhymeListDisplay = new JList<>(rhymeList);
 
-        lsSeparator = new JSeparator();
-
         slScrollPane = new JScrollPane(rhymeListDisplay);
 
-        //Function Calls
+        //Pre Init
         createFolders();
-        lookAndFeel();
+
+        //Init
         createView();
+
         FileNameMIH.FNMIH();
         SoundsLikeMIH.SLMIH();
         FileDeleterMIH.FDMIH();
         SavingMIH.SMIH();
+
         HookKB.hookBinding();
         SavingKB.savingBinding();
+
+        //Post Init
         setInitialRList();
+        lookAndFeel();
 
         SwingUtilities.invokeLater(FileLoaderFrame::new);
-
     }
 
     private void createView()
     {
-
         //Main Frame
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(Frame.MAXIMIZED_BOTH);
@@ -100,7 +97,6 @@ public class MainFrame extends JFrame
 
         mPanel.add(mMenuBar, BorderLayout.PAGE_START);
         mPanel.add(mTextArea, BorderLayout.CENTER);
-        mPanel.add(lsSeparator, BorderLayout.LINE_START);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
         mMenuBar.add(mFileDeleter);
@@ -118,13 +114,10 @@ public class MainFrame extends JFrame
         rhymeListDisplay.setFixedCellWidth(100);
         rhymeListDisplay.setFixedCellHeight(30);
         rhymeListDisplay.setFont(new Font("Courier New", Font.PLAIN, 15));
-        //rhymeListDisplay.setBorder(BorderFactory.createLineBorder(Color.black, 2));
 
         //slScrollPane Shenanigans
         slScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         slScrollPane.setBorder(null);
-
-        lsSeparator.setOrientation(SwingConstants.VERTICAL);
 
         pack();
         setVisible(true);
@@ -132,17 +125,14 @@ public class MainFrame extends JFrame
 
     public static void setInitialRList()
     {
-
         for(String h : rhymes)
         {
             rhymeList.addElement(h);
         }
-
     }
 
     private static void lookAndFeel()
     {
-
         /*SynthLookAndFeel laf = new SynthLookAndFeel();
         try
         {
@@ -160,14 +150,10 @@ public class MainFrame extends JFrame
         {
             e.printStackTrace();
         }*/
-
     }
 
     public static void main(String[] args)
     {
-
         SwingUtilities.invokeLater(MainFrame::new);
-
     }
-
 }

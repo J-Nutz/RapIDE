@@ -10,12 +10,10 @@ import org.json.JSONObject;
 
 public class JSONparser extends MainFrame
 {
-
     public static String SLrtrn;
 
     public static void parseJSON(String JSONinput)
     {
-
         final JSONArray JSONrtrn = new JSONArray(JSONinput);
 
         rhymeList.removeAllElements();

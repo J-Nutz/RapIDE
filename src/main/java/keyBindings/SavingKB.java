@@ -12,13 +12,10 @@ import java.io.IOException;
 
 public class SavingKB extends Saving
 {
-
     public static void savingBinding()
     {
-
         mTextArea.addKeyListener(new KeyListener()
         {
-
             @Override
             public void keyTyped(java.awt.event.KeyEvent evt)
             {
@@ -29,7 +26,6 @@ public class SavingKB extends Saving
             {
                 if (evt.isControlDown() && evt.getKeyCode() == KeyEvent.VK_S)
                 {
-
                     try
                     {
                         saveFile();
@@ -47,7 +43,5 @@ public class SavingKB extends Saving
 
             }
         });
-
     }
-
 }

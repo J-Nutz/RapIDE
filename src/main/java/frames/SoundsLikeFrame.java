@@ -11,7 +11,6 @@ import java.awt.*;
 
 public class SoundsLikeFrame extends JFrame
 {
-
     public JTextField soundsLikeTF;
     private JButton accept;
     private JButton cancel;
@@ -21,7 +20,6 @@ public class SoundsLikeFrame extends JFrame
 
     public SoundsLikeFrame()
     {
-
         accept = new JButton("Get SL Words");
         cancel = new JButton("Cancel");
 
@@ -32,12 +30,10 @@ public class SoundsLikeFrame extends JFrame
         FNFCreateView();
         acceptActionListener();
         cancelActionListener();
-
     }
 
     public void FNFCreateView()
     {
-
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("Sounds Like Getter");
@@ -59,7 +55,6 @@ public class SoundsLikeFrame extends JFrame
 
     public void acceptActionListener()
     {
-
         accept.addActionListener(e -> {
 
             wordToParse = soundsLikeTF.getText();
@@ -69,12 +64,10 @@ public class SoundsLikeFrame extends JFrame
             APIhitter.hitAPI(wordToParse);
 
         });
-
     }
 
     public void cancelActionListener()
     {
-
         cancel.addActionListener(e -> SoundsLikeFrame.this.dispose());
     }
 }

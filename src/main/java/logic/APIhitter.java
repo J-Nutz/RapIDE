@@ -24,7 +24,6 @@ public class APIhitter
 
     public static void hitAPI(String SLinput)
     {
-
         try
         {
             slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=50");

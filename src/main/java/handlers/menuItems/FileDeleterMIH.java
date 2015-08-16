@@ -1,4 +1,4 @@
-package handlers;
+package handlers.menuItems;
 
 /*
  * Created by Jonah on 8/3/2015.
@@ -13,23 +13,17 @@ import javax.swing.event.MenuListener;
 
 public class FileDeleterMIH extends MainFrame
 {
-
     public static void FDMIH()
     {
-
         mFileDeleter.addMenuListener(new SampleMenuListener());
-
     }
 
     public static class SampleMenuListener implements MenuListener
     {
-
         @Override
         public void menuSelected(MenuEvent e)
         {
-
             SwingUtilities.invokeLater(FileDeleterFrame::new);
-
         }
 
         @Override
@@ -44,5 +38,4 @@ public class FileDeleterMIH extends MainFrame
 
         }
     }
-
 }

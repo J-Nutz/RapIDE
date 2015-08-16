@@ -12,7 +12,6 @@ import static logic.Saving.saveFile;
 
 public class FileNameFrame extends JFrame
 {
-
     public JTextField fileNameTF;
     private JButton accept;
     private JButton cancel;
@@ -22,7 +21,6 @@ public class FileNameFrame extends JFrame
 
     public FileNameFrame()
     {
-
         accept = new JButton("Name File");
         cancel = new JButton("Cancel");
 
@@ -33,12 +31,10 @@ public class FileNameFrame extends JFrame
         FNFCreateView();
         acceptActionListener();
         cancelActionListener();
-
     }
 
     public void FNFCreateView()
     {
-
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
         setTitle("File Namer");
@@ -60,7 +56,6 @@ public class FileNameFrame extends JFrame
 
     public void acceptActionListener()
     {
-
         accept.addActionListener(e -> {
 
             FileName = fileNameTF.getText();
@@ -76,16 +71,11 @@ public class FileNameFrame extends JFrame
             }
 
             dispose();
-
         });
-
     }
 
     public void cancelActionListener()
     {
-
         cancel.addActionListener(e -> dispose());
-
     }
-
 }

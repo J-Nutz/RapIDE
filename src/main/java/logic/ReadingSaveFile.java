@@ -12,10 +12,8 @@ import java.io.Reader;
 
 public class ReadingSaveFile extends MainFrame
 {
-
     public static void readingSavedFile(String SelectedSaveFile)
     {
-
         Reader mReader = null;
 
         try
@@ -40,6 +38,5 @@ public class ReadingSaveFile extends MainFrame
                 //Leave Blank
             }
         }
-
     }
 }
