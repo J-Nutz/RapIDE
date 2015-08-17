@@ -77,9 +77,7 @@ public class FileDeleterFrame extends JFrame
             MainFrame.mTextArea.setText("");
 
             dispose();
-
         });
-
     }
 
     public void cancelActionListener()
@@ -88,46 +86,26 @@ public class FileDeleterFrame extends JFrame
     }
 
     public void setSavesComboBox()
-{
-    String adDir = System.getenv("APPDATA");
-    String pathToSaves = adDir + "\\RapIDE\\saves";
-
-    File savesFolder = new File(pathToSaves);
-    File[] listOfFiles = savesFolder.listFiles();
-
-    if (listOfFiles != null)
     {
-        for (File file : listOfFiles)
+        String adDir = System.getenv("APPDATA");
+        String pathToSaves = adDir + "\\RapIDE\\saves";
+
+        File savesFolder = new File(pathToSaves);
+        File[] listOfFiles = savesFolder.listFiles();
+
+        if (listOfFiles != null)
         {
-            if (file.isFile())
+            for (File file : listOfFiles)
             {
-                savesComboBox.addItem(file.getName());
+                if (file.isFile())
+                {
+                    savesComboBox.addItem(file.getName());
+                }
+                else if (file.isDirectory())
+                {
+                    System.out.println("Fucked M8");
+                }
             }
-            else if (file.isDirectory())
-            {
-                System.out.println("Fucked M8");
-            }
         }
     }
-}
-
-    public void ifNoSaves()
-    {
-        if(savesComboBox.getItemCount() == 0)
-        {
-            dispose();
-        }
-    }
-
-    public static boolean areSaves()
-    {
-        boolean noSaves = false;
-
-        if(savesComboBox.getItemCount() == 0)
-        {
-            noSaves = true;
-        }
-        return noSaves;
-    }
-
 }
