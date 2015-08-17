@@ -35,7 +35,6 @@ public class FileDeleterFrame extends JFrame
     {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setTitle("File Deleter");
         setSize(275, 100);
         setResizable(false);
         getContentPane().add(mFLFPanel);

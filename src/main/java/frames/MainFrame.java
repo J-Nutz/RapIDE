@@ -8,6 +8,7 @@ import handlers.menuItems.FileNameMIH;
 import handlers.menuItems.SoundsLikeMIH;
 
 import javax.swing.*;
+import javax.swing.border.Border;
 import java.awt.*;
 
 import static logic.FolderCreator.createFolders;
@@ -96,6 +97,7 @@ public class MainFrame extends JFrame
         getContentPane().add(mPanel);
 
         mPanel.add(mMenuBar, BorderLayout.PAGE_START);
+        mPanel.add(Box.createHorizontalStrut(1), BorderLayout.LINE_START);
         mPanel.add(mTextArea, BorderLayout.CENTER);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
@@ -108,7 +110,9 @@ public class MainFrame extends JFrame
         mTextArea.setLineWrap(true);
         mTextArea.setWrapStyleWord(true);
         mTextArea.setBackground(mpColor);
-        mTextArea.setBorder(BorderFactory.createLineBorder(Color.black, 2));
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
+        mTextArea.setBorder(BorderFactory.createCompoundBorder(border,
+                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
 
         //RhymeList Shenanigans
         rhymeListDisplay.setFixedCellWidth(100);

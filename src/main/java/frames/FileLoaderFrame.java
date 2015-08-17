@@ -42,7 +42,6 @@ public class FileLoaderFrame extends JFrame
     {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setTitle("File Loader");
         setSize(275, 100);
         setResizable(false);
         getContentPane().add(mFLFPanel);
