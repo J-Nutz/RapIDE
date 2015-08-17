@@ -25,10 +25,10 @@ public class FileDeleterFrame extends JFrame
         cancel = new JButton("Cancel");
 
         FLFCreateView();
+        setSavesComboBox();
+        //ifNoSaves();
         acceptActionListener();
         cancelActionListener();
-        setSavesComboBox();
-        ifNoSaves();
     }
 
     public void FLFCreateView()
@@ -37,6 +37,7 @@ public class FileDeleterFrame extends JFrame
         setLocationRelativeTo(null);
         setSize(275, 100);
         setResizable(false);
+        setAlwaysOnTop(true);
         getContentPane().add(mFLFPanel);
 
         mFLFPanel.setLayout(new FlowLayout());
@@ -87,34 +88,46 @@ public class FileDeleterFrame extends JFrame
     }
 
     public void setSavesComboBox()
+{
+    String adDir = System.getenv("APPDATA");
+    String pathToSaves = adDir + "\\RapIDE\\saves";
+
+    File savesFolder = new File(pathToSaves);
+    File[] listOfFiles = savesFolder.listFiles();
+
+    if (listOfFiles != null)
     {
-        String adDir = System.getenv("APPDATA");
-        String pathToSaves = adDir + "\\RapIDE\\saves";
-
-        File savesFolder = new File(pathToSaves);
-        File[] listOfFiles = savesFolder.listFiles();
-
-        if (listOfFiles != null)
+        for (File file : listOfFiles)
         {
-            for (File file : listOfFiles)
+            if (file.isFile())
             {
-                if (file.isFile())
-                {
-                    savesComboBox.addItem(file.getName());
-                }
-                else if (file.isDirectory())
-                {
-                    System.out.println("Fucked M8");
-                }
+                savesComboBox.addItem(file.getName());
+            }
+            else if (file.isDirectory())
+            {
+                System.out.println("Fucked M8");
             }
         }
     }
+}
 
-    public void ifNoSaves(){
-
+    public void ifNoSaves()
+    {
         if(savesComboBox.getItemCount() == 0)
         {
             dispose();
         }
     }
+
+    public static boolean areSaves()
+    {
+        boolean noSaves = false;
+
+        if(savesComboBox.getItemCount() == 0)
+        {
+            noSaves = true;
+        }
+        return noSaves;
+    }
+
 }

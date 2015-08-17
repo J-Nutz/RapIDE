@@ -38,6 +38,7 @@ public class SoundsLikeFrame extends JFrame
         setLocationRelativeTo(null);
         setSize(210, 100);
         setResizable(false);
+        setAlwaysOnTop(true);
         getContentPane().add(mSLFPanel);
 
         mSLFPanel.setLayout(new FlowLayout());

@@ -6,8 +6,6 @@ package frames;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.IOException;
 
 import static logic.Saving.saveFile;
@@ -41,6 +39,7 @@ public class FileNameFrame extends JFrame
         setLocationRelativeTo(null);
         setSize(185, 100);
         setResizable(false);
+        setAlwaysOnTop(true);
         getContentPane().add(mFNFPanel);
 
         mFNFPanel.setLayout(new FlowLayout());

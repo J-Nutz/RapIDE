@@ -5,11 +5,15 @@ package handlers.menuItems;
  */
 
 import frames.FileDeleterFrame;
+import frames.FileNameFrame;
 import frames.MainFrame;
+import logic.GetFileList;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
+
+import static logic.GetFileList.GetFiles;
 
 public class FileDeleterMIH extends MainFrame
 {
@@ -23,7 +27,17 @@ public class FileDeleterMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            SwingUtilities.invokeLater(FileDeleterFrame::new);
+
+            GetFiles();
+
+            if(GetFileList.hasSaves)
+            {
+                SwingUtilities.invokeLater(FileDeleterFrame::new);
+            }
+            else
+            {
+                SwingUtilities.invokeLater(FileNameFrame::new);
+            }
         }
 
         @Override

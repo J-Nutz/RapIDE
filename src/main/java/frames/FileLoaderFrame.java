@@ -44,6 +44,7 @@ public class FileLoaderFrame extends JFrame
         setLocationRelativeTo(null);
         setSize(275, 100);
         setResizable(false);
+        setAlwaysOnTop(true);
         getContentPane().add(mFLFPanel);
 
         mFLFPanel.setLayout(new FlowLayout());
