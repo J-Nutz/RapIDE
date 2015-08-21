@@ -11,7 +11,7 @@ import java.io.IOException;
 import static frames.MainFrame.mTextArea;
 import static logic.Saving.saveFile;
 
-public class FileNameFrame extends JFrame
+public class FileCreatorFrame extends JFrame
 {
     public JTextField fileNameTF;
     private JButton accept;
@@ -20,7 +20,7 @@ public class FileNameFrame extends JFrame
 
     public static String FileName;
 
-    public FileNameFrame()
+    public FileCreatorFrame()
     {
         accept = new JButton("Name File");
         cancel = new JButton("Cancel");

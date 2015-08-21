@@ -4,8 +4,8 @@ package handlers.menuItems;
  * Created by Jonah on 8/3/2015.
  */
 
+import frames.FileCreatorFrame;
 import frames.FileDeleterFrame;
-import frames.FileNameFrame;
 import frames.MainFrame;
 import logic.GetFileList;
 
@@ -36,7 +36,7 @@ public class FileDeleterMIH extends MainFrame
             }
             else
             {
-                SwingUtilities.invokeLater(FileNameFrame::new);
+                SwingUtilities.invokeLater(FileCreatorFrame::new);
             }
         }
 

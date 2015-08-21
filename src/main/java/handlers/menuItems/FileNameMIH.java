@@ -4,7 +4,7 @@ package handlers.menuItems;
  * Created by Jonah on 7/23/2015.
  */
 
-import frames.FileNameFrame;
+import frames.FileCreatorFrame;
 import frames.MainFrame;
 
 import javax.swing.*;
@@ -23,7 +23,7 @@ public class FileNameMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            SwingUtilities.invokeLater(FileNameFrame::new);
+            SwingUtilities.invokeLater(FileCreatorFrame::new);
         }
 
         @Override

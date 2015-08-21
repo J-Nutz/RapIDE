@@ -12,9 +12,14 @@ import java.io.Reader;
 
 public class ReadingSaveFile extends MainFrame
 {
+
+    public static String SelectedSaveFileCopy;
+
     public static void readingSavedFile(String SelectedSaveFile)
     {
         Reader mReader = null;
+
+        SelectedSaveFileCopy = SelectedSaveFile;
 
         try
         {

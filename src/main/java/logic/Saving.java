@@ -4,8 +4,8 @@ package logic;
  * Created by Jonah on 7/23/2015.
  */
 
+import frames.FileCreatorFrame;
 import frames.FileLoaderFrame;
-import frames.FileNameFrame;
 import frames.MainFrame;
 
 import java.io.File;
@@ -20,7 +20,7 @@ public class Saving extends MainFrame
 
         File fileDirectory = new File(adDir + "\\RapIDE\\saves\\");
 
-        if(FileNameFrame.FileName == null)
+        if(FileCreatorFrame.FileName == null)
         {
             System.out.println("Saving: " + FileLoaderFrame.selectedSave);
 
@@ -30,9 +30,9 @@ public class Saving extends MainFrame
         }
         else
         {
-            System.out.println("Saving: " + FileNameFrame.FileName);
+            System.out.println("Saving: " + FileCreatorFrame.FileName);
 
-            FileWriter mFileWriter = new FileWriter(new File(fileDirectory, FileNameFrame.FileName));
+            FileWriter mFileWriter = new FileWriter(new File(fileDirectory, FileCreatorFrame.FileName));
             mFileWriter.write(mTextArea.getText());
             mFileWriter.close();
         }
