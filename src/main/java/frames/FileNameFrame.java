@@ -8,6 +8,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
 
+import static frames.MainFrame.mTextArea;
 import static logic.Saving.saveFile;
 
 public class FileNameFrame extends JFrame
@@ -68,6 +69,7 @@ public class FileNameFrame extends JFrame
             }
 
             fileNameTF.setText(FileName);
+            mTextArea.setText("");
 
             try
             {

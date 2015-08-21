@@ -74,7 +74,6 @@ public class FileLoaderFrame extends JFrame
         createNew.addActionListener(e -> {
 
             dispose();
-
             SwingUtilities.invokeLater(FileNameFrame::new);
 
         });

@@ -9,6 +9,9 @@ Release Version: UR
 -----------------------------------------------
 |||||||||||||||||||||||||||||||||||||||||||||||
 -----------------------------------------------
+Add:
+    - Make FileNameFrame rename the file
+
 Tomorrow:
     - Add key features
     - Optimize (After Features)

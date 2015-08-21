@@ -1,11 +1,8 @@
 package frames;
 
-import handlers.menuItems.FileDeleterMIH;
-import handlers.menuItems.SavingMIH;
+import handlers.menuItems.*;
 import keyBindings.HookKB;
 import keyBindings.SavingKB;
-import handlers.menuItems.FileNameMIH;
-import handlers.menuItems.SoundsLikeMIH;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -27,10 +24,12 @@ public class MainFrame extends JFrame
     public static JTextArea mTextArea;
 
     private JMenuBar mMenuBar;
-    public static JMenu mFileName;
+    public static JMenu mCreateFile;
     public static JMenu mSoundsLike;
     public static JMenu mFileDeleter;
     public static JMenu mSave;
+    public static JMenu mOpenFile;
+    public static JMenu mRenameFile;
 
     public static DefaultListModel<String> rhymeList;
 
@@ -50,10 +49,13 @@ public class MainFrame extends JFrame
 
         mMenuBar = new JMenuBar();
 
-        mFileName = new JMenu("File Name");
+        mCreateFile = new JMenu("Create New File");
         mSoundsLike = new JMenu("Sounds Like");
         mFileDeleter = new JMenu("Delete Files");
         mSave = new JMenu("Save");
+        mOpenFile = new JMenu("Open File");
+        mRenameFile = new JMenu("Rename File");
+
 
         rhymeList = new DefaultListModel<>();
         rhymeListDisplay = new JList<>(rhymeList);
@@ -70,6 +72,8 @@ public class MainFrame extends JFrame
         SoundsLikeMIH.SLMIH();
         FileDeleterMIH.FDMIH();
         SavingMIH.SMIH();
+        FileOpenerMIH.FOMIH();
+        FileRenamerMIH.FRMIH();
 
         HookKB.hookBinding();
         SavingKB.savingBinding();
@@ -102,9 +106,11 @@ public class MainFrame extends JFrame
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
         mMenuBar.add(mFileDeleter);
-        mMenuBar.add(mFileName);
+        mMenuBar.add(mCreateFile);
         mMenuBar.add(mSoundsLike);
         mMenuBar.add(mSave);
+        mMenuBar.add(mOpenFile);
+        mMenuBar.add(mRenameFile);
 
         //TextArea Shenanigans
         mTextArea.setLineWrap(true);
