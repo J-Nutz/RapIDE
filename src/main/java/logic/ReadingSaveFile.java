@@ -17,7 +17,7 @@ public class ReadingSaveFile extends MainFrame
 
     public static void readingSavedFile(String SelectedSaveFile)
     {
-        Reader mReader = null;
+        Reader mReader;
 
         SelectedSaveFileCopy = SelectedSaveFile;
 
@@ -26,12 +26,13 @@ public class ReadingSaveFile extends MainFrame
             String adDir = System.getenv("APPDATA");
             mReader = new FileReader(new File(adDir + "\\RapIDE\\saves\\" + SelectedSaveFile));
             mTextArea.read(mReader, "What? Lol.");
+            mReader.close();
         }
         catch (Exception exp)
         {
             exp.printStackTrace();
         }
-        finally
+        /*finally
         {
             try
             {
@@ -42,6 +43,6 @@ public class ReadingSaveFile extends MainFrame
             {
                 //Leave Blank
             }
-        }
+        }*/
     }
 }

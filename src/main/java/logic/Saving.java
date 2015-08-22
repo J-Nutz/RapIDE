@@ -14,6 +14,9 @@ import java.io.IOException;
 
 public class Saving extends MainFrame
 {
+
+    public static File mFile;
+
     public static void saveFile() throws IOException
     {
         String adDir = System.getenv("APPDATA");
@@ -24,7 +27,8 @@ public class Saving extends MainFrame
         {
             System.out.println("Saving: " + FileLoaderFrame.selectedSave);
 
-            FileWriter mFileWriter = new FileWriter(new File(fileDirectory, FileLoaderFrame.selectedSave));
+            FileWriter mFileWriter = new FileWriter(mFile = new File(fileDirectory, FileLoaderFrame.selectedSave));
+            System.out.println(mFile);
             mFileWriter.write(mTextArea.getText());
             mFileWriter.close();
         }

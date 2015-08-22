@@ -11,6 +11,7 @@ Release Version: UR
 -----------------------------------------------
 Add:
     - Make FileNameFrame rename the file
+    - Use FileLoaderFrame to choose file to rename??
 
 Tomorrow:
     - Add key features

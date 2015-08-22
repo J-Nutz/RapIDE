@@ -8,8 +8,10 @@ import logic.ReadingSaveFile;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.FileSystems;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class FileRenamerFrame extends JFrame
 {
@@ -60,35 +62,34 @@ public class FileRenamerFrame extends JFrame
 
             if(ReadingSaveFile.SelectedSaveFileCopy != null)
             {
-                System.out.println(fileRenameTF.getText());
-
                 String adDir = System.getenv("APPDATA");
-                String pathToSaves = adDir + "\\RapIDE\\saves";
+                String pathToSaves = adDir + "\\RapIDE\\saves\\" + ReadingSaveFile.SelectedSaveFileCopy;
 
-                File oldFile = new File(pathToSaves + ReadingSaveFile.SelectedSaveFileCopy);
-                System.out.println(ReadingSaveFile.SelectedSaveFileCopy);
+                Path mPath = FileSystems.getDefault().getPath(pathToSaves);
 
-                File newFile = new File(pathToSaves + fileRenameTF.getText());
-
-                    if(newFile.exists()){
-                        try
-                        {
-                            throw new java.io.IOException("File Already Exists");
-                        }
-                        catch (IOException e1)
-                        {
-                            e1.printStackTrace();
-                        }
-                    }
-
-                boolean renameStatus = oldFile.renameTo(newFile);
-
-                if(!renameStatus)
+                try
                 {
-                    System.out.println("Error");
+                    Files.move(mPath, mPath.resolveSibling(fileRenameTF.getText()));
                 }
+                catch (IOException e1)
+                {
+                    e1.printStackTrace();
+                }
+            }
+            else
+            {
+                String adDir = System.getenv("APPDATA");
+                String pathToSaves = adDir + "\\RapIDE\\saves\\" + FileCreatorFrame.FileName;
+                Path mPath = FileSystems.getDefault().getPath(pathToSaves);
 
-                //FileLoaderFrame.selectedSave
+                try
+                {
+                    Files.move(mPath, mPath.resolveSibling(fileRenameTF.getText()));
+                }
+                catch (IOException e1)
+                {
+                    e1.printStackTrace();
+                }
             }
 
             dispose();
@@ -99,6 +100,4 @@ public class FileRenamerFrame extends JFrame
     {
         cancel.addActionListener(e -> dispose());
     }
-
-
 }
