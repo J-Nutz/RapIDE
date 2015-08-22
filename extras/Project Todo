@@ -10,8 +10,8 @@ Release Version: UR
 |||||||||||||||||||||||||||||||||||||||||||||||
 -----------------------------------------------
 Add:
-    - Make FileNameFrame rename the file
     - Use FileLoaderFrame to choose file to rename??
+    - Make manual
 
 Tomorrow:
     - Add key features

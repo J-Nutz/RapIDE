@@ -81,7 +81,6 @@ public class FileRenamerFrame extends JFrame
                 String adDir = System.getenv("APPDATA");
                 String pathToSaves = adDir + "\\RapIDE\\saves\\" + FileCreatorFrame.FileName;
                 Path mPath = FileSystems.getDefault().getPath(pathToSaves);
-
                 try
                 {
                     Files.move(mPath, mPath.resolveSibling(fileRenameTF.getText()));
@@ -91,7 +90,6 @@ public class FileRenamerFrame extends JFrame
                     e1.printStackTrace();
                 }
             }
-
             dispose();
         });
     }
