@@ -28,21 +28,9 @@ public class ReadingSaveFile extends MainFrame
             mTextArea.read(mReader, "What? Lol.");
             mReader.close();
         }
-        catch (Exception exp)
+        catch (Exception ex)
         {
-            exp.printStackTrace();
+            ex.printStackTrace();
         }
-        /*finally
-        {
-            try
-            {
-                assert mReader != null;
-                mReader.close();
-            }
-            catch (Exception exp)
-            {
-                //Leave Blank
-            }
-        }*/
     }
 }

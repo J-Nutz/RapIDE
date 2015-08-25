@@ -16,29 +16,28 @@ public class Saving extends MainFrame
 {
 
     public static File mFile;
+    public static String adDir = System.getenv("APPDATA");
+    public static File fileDirectory = new File(adDir + "\\RapIDE\\saves\\");
 
     public static void saveFile() throws IOException
     {
-        String adDir = System.getenv("APPDATA");
-
-        File fileDirectory = new File(adDir + "\\RapIDE\\saves\\");
-
         if(FileCreatorFrame.FileName == null)
         {
-            System.out.println("Saving: " + FileLoaderFrame.selectedSave);
-
-            FileWriter mFileWriter = new FileWriter(mFile = new File(fileDirectory, FileLoaderFrame.selectedSave));
-            System.out.println(mFile);
-            mFileWriter.write(mTextArea.getText());
-            mFileWriter.close();
+            save(FileLoaderFrame.selectedSave);
         }
         else
         {
-            System.out.println("Saving: " + FileCreatorFrame.FileName);
-
-            FileWriter mFileWriter = new FileWriter(new File(fileDirectory, FileCreatorFrame.FileName));
-            mFileWriter.write(mTextArea.getText());
-            mFileWriter.close();
+            save(FileCreatorFrame.FileName);
         }
     }
+
+    public static void save(String fileToSave) throws IOException
+    {
+        System.out.println("Saving: " + FileCreatorFrame.FileName);
+
+        FileWriter mFileWriter = new FileWriter(mFile = new File(fileDirectory, fileToSave));
+        mFileWriter.write(mTextArea.getText());
+        mFileWriter.close();
+    }
+
 }

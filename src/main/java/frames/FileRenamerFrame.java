@@ -64,14 +64,13 @@ public class FileRenamerFrame extends JFrame
             {
                 String adDir = System.getenv("APPDATA");
                 String pathToSaves = adDir + "\\RapIDE\\saves\\" + ReadingSaveFile.SelectedSaveFileCopy;
-
                 Path mPath = FileSystems.getDefault().getPath(pathToSaves);
 
                 try
                 {
                     Files.move(mPath, mPath.resolveSibling(fileRenameTF.getText()));
                 }
-                catch (IOException e1)
+                catch(IOException e1)
                 {
                     e1.printStackTrace();
                 }
@@ -81,6 +80,7 @@ public class FileRenamerFrame extends JFrame
                 String adDir = System.getenv("APPDATA");
                 String pathToSaves = adDir + "\\RapIDE\\saves\\" + FileCreatorFrame.FileName;
                 Path mPath = FileSystems.getDefault().getPath(pathToSaves);
+
                 try
                 {
                     Files.move(mPath, mPath.resolveSibling(fileRenameTF.getText()));

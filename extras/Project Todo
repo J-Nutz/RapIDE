@@ -12,6 +12,7 @@ Release Version: UR
 Add:
     - Use FileLoaderFrame to choose file to rename??
     - Make manual
+    - New saving method
 
 Tomorrow:
     - Add key features
@@ -22,6 +23,9 @@ One Week:
 
 Eventually:
     - Pretty Everything Up
+
+Bugs:
+    - Can't rename file after renaming it once
 
 ------------------------------------------------
 ||||||||||||||||||||||||||||||||||||||||||||||||
