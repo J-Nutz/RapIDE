@@ -9,6 +9,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import static frames.MainFrame.mTextArea;
+import static logic.RemoveChars.removeBannedChars;
 import static logic.Saving.saveFile;
 
 public class FileCreatorFrame extends JFrame
@@ -61,13 +62,7 @@ public class FileCreatorFrame extends JFrame
 
             FileName = fileNameTF.getText();
 
-            char[] bannedCharArray = {'/', ':', '*', '?', '<', '>', '|', '"'};
-            for (char charToRemove : bannedCharArray)
-            {
-                FileName = FileName.replace("" + charToRemove, "");
-            }
-
-            fileNameTF.setText(FileName);
+            fileNameTF.setText(removeBannedChars(FileName));
             mTextArea.setText("");
 
             try

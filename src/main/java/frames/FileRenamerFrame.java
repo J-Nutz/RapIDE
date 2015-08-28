@@ -136,5 +136,4 @@ public class FileRenamerFrame extends JFrame
             SwingUtilities.invokeLater(FileCreatorFrame::new);
         }
     }
-
 }

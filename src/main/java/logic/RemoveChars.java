@@ -8,8 +8,6 @@ public class RemoveChars
 {
     public static String removeBannedChars(String wordToEdit)
     {
-        String editedWord;
-
         char[] bannedCharArray = {'/', ':', '*', '?', '<', '>', '|', '"'};
         for (char charToRemove : bannedCharArray)
         {
