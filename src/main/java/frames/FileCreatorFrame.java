@@ -61,11 +61,10 @@ public class FileCreatorFrame extends JFrame
 
             FileName = fileNameTF.getText();
 
-            String bannedChars = "/:*?<>|";
-            char[] ca = bannedChars.toCharArray();
-            for (char c : ca)
+            char[] bannedCharArray = {'/', ':', '*', '?', '<', '>', '|', '"'};
+            for (char charToRemove : bannedCharArray)
             {
-                FileName = FileName.replace("" + c, "");
+                FileName = FileName.replace("" + charToRemove, "");
             }
 
             fileNameTF.setText(FileName);

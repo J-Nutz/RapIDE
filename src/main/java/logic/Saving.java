@@ -39,5 +39,4 @@ public class Saving extends MainFrame
         mFileWriter.write(mTextArea.getText());
         mFileWriter.close();
     }
-
 }

@@ -1,101 +1,140 @@
 package frames;
 
 /*
- * Created by Jonah on 8/20/2015.
+ * Created by Jonah on 8/27/2015.
  */
 
 import logic.ReadingSaveFile;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
+import static logic.RemoveChars.removeBannedChars;
+
 public class FileRenamerFrame extends JFrame
 {
+    public static JComboBox<Object> savesComboBox;
 
-    public JTextField fileRenameTF;
-    private JButton accept;
+    public static String selectedSave;
+
+    private JPanel mFTRPanel;
+
+    private JButton rename;
     private JButton cancel;
-    private JPanel mFNFPanel;
+    private JTextField newNameTF;
 
     public FileRenamerFrame()
     {
-        accept = new JButton("Rename File");
+        mFTRPanel = new JPanel();
+
+        savesComboBox = new JComboBox<>();
+
+        rename = new JButton("Rename File");
         cancel = new JButton("Cancel");
 
-        fileRenameTF = new JTextField("Enter File Name");
+        newNameTF = new JTextField("Enter New Name");
 
-        mFNFPanel = new JPanel();
+        FLFCreateView();
 
-        FNFCreateView();
-        acceptActionListener();
+        selectActionListener();
         cancelActionListener();
+        setSavesComboBox();
+        ifNoSaves();
     }
 
-    public void FNFCreateView()
+    public void FLFCreateView()
     {
         setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         setLocationRelativeTo(null);
-        setSize(185, 100);
+        setSize(275, 100);
         setResizable(false);
         setAlwaysOnTop(true);
-        getContentPane().add(mFNFPanel);
+        getContentPane().add(mFTRPanel);
 
-        mFNFPanel.setLayout(new FlowLayout());
-
-        mFNFPanel.add(fileRenameTF);
-        mFNFPanel.add(accept);
-        mFNFPanel.add(cancel);
-
-        accept.setSize(25, 15);
-        cancel.setSize(25, 15);
+        mFTRPanel.setLayout(new FlowLayout());
+        mFTRPanel.add(savesComboBox);
+        mFTRPanel.add(newNameTF);
+        mFTRPanel.add(rename);
+        mFTRPanel.add(cancel);
 
         setVisible(true);
     }
 
-    public void acceptActionListener()
+    public void selectActionListener()
     {
-        accept.addActionListener(e -> {
+        rename.addActionListener(e -> {
 
-            if(ReadingSaveFile.SelectedSaveFileCopy != null)
+            Object selectedSaveObj = savesComboBox.getSelectedItem();
+            selectedSave = selectedSaveObj.toString();
+
+            ReadingSaveFile.readingSavedFile(selectedSave);
+
+            String adDir = System.getenv("APPDATA");
+            String pathToSaves = adDir + "\\RapIDE\\saves\\" + selectedSave;
+            Path mPath = FileSystems.getDefault().getPath(pathToSaves);
+
+            try
             {
-                String adDir = System.getenv("APPDATA");
-                String pathToSaves = adDir + "\\RapIDE\\saves\\" + ReadingSaveFile.SelectedSaveFileCopy;
-                Path mPath = FileSystems.getDefault().getPath(pathToSaves);
-
-                try
-                {
-                    Files.move(mPath, mPath.resolveSibling(fileRenameTF.getText()));
-                }
-                catch(IOException e1)
-                {
-                    e1.printStackTrace();
-                }
+                Files.move(mPath, mPath.resolveSibling(removeBannedChars(newNameTF.getText())));
             }
-            else
+            catch (IOException e1)
             {
-                String adDir = System.getenv("APPDATA");
-                String pathToSaves = adDir + "\\RapIDE\\saves\\" + FileCreatorFrame.FileName;
-                Path mPath = FileSystems.getDefault().getPath(pathToSaves);
-
-                try
-                {
-                    Files.move(mPath, mPath.resolveSibling(fileRenameTF.getText()));
-                }
-                catch (IOException e1)
-                {
-                    e1.printStackTrace();
-                }
+                e1.printStackTrace();
             }
+
             dispose();
+
         });
     }
 
     public void cancelActionListener()
     {
-        cancel.addActionListener(e -> dispose());
+        cancel.addActionListener(e -> {
+
+            dispose();
+            SwingUtilities.invokeLater(FileCreatorFrame::new);
+
+        });
     }
+
+    public void setSavesComboBox()
+    {
+        String adDir = System.getenv("APPDATA");
+        String pathToSaves = adDir + "\\RapIDE\\saves";
+
+        File savesFolder = new File(pathToSaves);
+        File[] listOfFiles = savesFolder.listFiles();
+
+        if (listOfFiles != null)
+        {
+            for (File file : listOfFiles)
+            {
+                if (file.isFile())
+                {
+                    savesComboBox.addItem(file.getName());
+                    System.out.println("Loading: " + file.getName());
+                }
+                else if (file.isDirectory())
+                {
+                    System.out.println("Fucked M8");
+                }
+            }
+        }
+    }
+
+    public void ifNoSaves(){
+
+        if(savesComboBox.getItemCount() == 0)
+        {
+            dispose();
+
+            SwingUtilities.invokeLater(FileCreatorFrame::new);
+        }
+    }
+
 }
