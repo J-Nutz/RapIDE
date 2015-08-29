@@ -24,8 +24,7 @@ public class FileRenamerFrame extends JFrame
 
     private JPanel mFTRPanel;
 
-    private JButton rename;
-    private JButton cancel;
+    private JButton rename, cancel;
     private JTextField newNameTF;
 
     public FileRenamerFrame()

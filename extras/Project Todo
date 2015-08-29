@@ -9,8 +9,12 @@ Release Version: UR
 -----------------------------------------------
 |||||||||||||||||||||||||||||||||||||||||||||||
 -----------------------------------------------
+Notes:
+    - First release coming soon
+-----------------------------------------------
+|||||||||||||||||||||||||||||||||||||||||||||||
+-----------------------------------------------
 Add:
-    - Use FileLoaderFrame to choose file to rename??
     - Make manual
     - New saving method
 
@@ -25,7 +29,7 @@ Eventually:
     - Pretty Everything Up
 
 Bugs:
-    - Can't rename file after renaming it once
+    - Can't rename file after renaming it once *Fixed*
 
 ------------------------------------------------
 ||||||||||||||||||||||||||||||||||||||||||||||||

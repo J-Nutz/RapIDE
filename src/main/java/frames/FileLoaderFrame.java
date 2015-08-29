@@ -86,6 +86,7 @@ public class FileLoaderFrame extends JFrame
 
         File savesFolder = new File(pathToSaves);
         File[] listOfFiles = savesFolder.listFiles();
+        String[] finalList = savesFolder.list();
 
         if (listOfFiles != null)
         {
@@ -94,9 +95,9 @@ public class FileLoaderFrame extends JFrame
                 if (file.isFile())
                 {
                     savesComboBox.addItem(file.getName());
+
                     System.out.println("Loading: " + file.getName());
-                }
-                else if (file.isDirectory())
+                } else if (file.isDirectory())
                 {
                     System.out.println("Fucked M8");
                 }
