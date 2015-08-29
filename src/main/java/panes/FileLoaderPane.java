@@ -7,6 +7,8 @@ package panes;
 import javax.swing.*;
 import java.io.File;
 
+import static logic.ReadingSaveFile.readingSavedFile;
+
 public class FileLoaderPane extends JOptionPane
 {
     String adDir = System.getenv("APPDATA");
@@ -35,9 +37,10 @@ public class FileLoaderPane extends JOptionPane
         }
 
         Object selectedValue = JOptionPane.showInputDialog(null,
-                "Choose one", "Input",
-                JOptionPane.INFORMATION_MESSAGE, null,
+                "Choose File To Load", "File Loader",
+                JOptionPane.PLAIN_MESSAGE, null,
                 result, result[0]);
-        System.out.println(selectedValue);
+
+        readingSavedFile(selectedValue.toString());
     }
 }
