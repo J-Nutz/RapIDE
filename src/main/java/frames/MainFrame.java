@@ -56,7 +56,6 @@ public class MainFrame extends JFrame
         mOpenFile = new JMenu("Open File");
         mRenameFile = new JMenu("Rename File");
 
-
         rhymeList = new DefaultListModel<>();
         rhymeListDisplay = new JList<>(rhymeList);
 

@@ -16,7 +16,13 @@ Notes:
 -----------------------------------------------
 Add:
     - Make manual
-    - New saving method
+    - Come up with version convention
+        - First Release:
+            - Replace all frames with OptionPanes
+            - Optimize
+            - L&F
+
+            Version 0.0.8.b
 
 Tomorrow:
     - Add key features

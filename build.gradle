@@ -1,4 +1,4 @@
-version 'UR'
+version '0.0.8.b'
 
 apply plugin: 'java'
 
