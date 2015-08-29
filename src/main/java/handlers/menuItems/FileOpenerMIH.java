@@ -4,8 +4,8 @@ package handlers.menuItems;
  * Created by Jonah on 8/20/2015.
  */
 
-import frames.FileLoaderFrame;
 import frames.MainFrame;
+import panes.FileLoaderPane;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
@@ -24,7 +24,7 @@ public class FileOpenerMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            SwingUtilities.invokeLater(FileLoaderFrame::new);
+            SwingUtilities.invokeLater(FileLoaderPane::new);
         }
 
         @Override

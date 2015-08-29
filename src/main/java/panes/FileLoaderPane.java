@@ -29,7 +29,8 @@ public class FileLoaderPane extends JOptionPane
                 {
                     result[i] = file.getName();
                     i++;
-                } else if(file.isDirectory())
+                }
+                else if(file.isDirectory())
                 {
                     System.out.println("Fucked M8");
                 }

@@ -57,15 +57,14 @@ public class FileLoaderFrame extends JFrame
 
     public void acceptActionListener()
     {
-        accept.addActionListener(e -> {
-
+        accept.addActionListener(e ->
+        {
             Object selectedSaveObj = savesComboBox.getSelectedItem();
             selectedSave = selectedSaveObj.toString();
 
             ReadingSaveFile.readingSavedFile(selectedSave);
 
             dispose();
-
         });
     }
 
@@ -86,7 +85,6 @@ public class FileLoaderFrame extends JFrame
 
         File savesFolder = new File(pathToSaves);
         File[] listOfFiles = savesFolder.listFiles();
-        String[] finalList = savesFolder.list();
 
         if (listOfFiles != null)
         {

@@ -5,7 +5,7 @@ package handlers.menuItems;
  */
 
 import frames.MainFrame;
-import panes.FileLoaderPane;
+import frames.SoundsLikeFrame;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
@@ -23,8 +23,7 @@ public class SoundsLikeMIH
         @Override
         public void menuSelected(MenuEvent e)
         {
-            //SwingUtilities.invokeLater(SoundsLikeFrame::new);
-            SwingUtilities.invokeLater(FileLoaderPane::new);
+            SwingUtilities.invokeLater(SoundsLikeFrame::new);
         }
 
         @Override
