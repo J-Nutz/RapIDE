@@ -4,14 +4,14 @@ package handlers.menuItems;
  * Created by Jonah on 7/23/2015.
  */
 
-import frames.FileCreatorFrame;
 import frames.MainFrame;
+import panes.FileCreatorPane;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-public class FileNameMIH extends MainFrame
+public class FileCreatorMIH extends MainFrame
 {
     public static void FNMIH()
     {
@@ -23,7 +23,7 @@ public class FileNameMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            SwingUtilities.invokeLater(FileCreatorFrame::new);
+            SwingUtilities.invokeLater(FileCreatorPane::new);
         }
 
         @Override

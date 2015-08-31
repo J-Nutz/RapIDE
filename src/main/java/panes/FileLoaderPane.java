@@ -38,9 +38,9 @@ public class FileLoaderPane extends JOptionPane
         }
 
         Object selectedValue = JOptionPane.showInputDialog(null,
-                "Choose File To Load", "File Loader",
-                JOptionPane.PLAIN_MESSAGE, null,
-                result, result[0]);
+            "Choose File To Load", "File Loader",
+            JOptionPane.PLAIN_MESSAGE, null,
+            result, result[0]);
 
         readingSavedFile(selectedValue.toString());
     }

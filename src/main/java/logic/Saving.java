@@ -7,6 +7,7 @@ package logic;
 import frames.FileCreatorFrame;
 import frames.FileLoaderFrame;
 import frames.MainFrame;
+import panes.FileCreatorPane;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -20,13 +21,13 @@ public class Saving extends MainFrame
 
     public static void saveFile() throws IOException
     {
-        if(FileCreatorFrame.FileName == null)
+        if(FileCreatorPane.FileName.toString() == null)
         {
             save(FileLoaderFrame.selectedSave);
         }
         else
         {
-            save(FileCreatorFrame.FileName);
+            save(FileCreatorPane.FileName.toString());
         }
     }
 

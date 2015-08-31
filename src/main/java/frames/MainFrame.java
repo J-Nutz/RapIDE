@@ -67,7 +67,7 @@ public class MainFrame extends JFrame
         //Init
         createView();
 
-        FileNameMIH.FNMIH();
+        FileCreatorMIH.FNMIH();
         SoundsLikeMIH.SLMIH();
         FileDeleterMIH.FDMIH();
         SavingMIH.SMIH();
