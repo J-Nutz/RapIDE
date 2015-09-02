@@ -5,6 +5,7 @@ package frames;
  */
 
 import logic.ReadingSaveFile;
+import panes.FileCreatorPane;
 
 import javax.swing.*;
 import java.awt.*;
@@ -73,7 +74,7 @@ public class FileLoaderFrame extends JFrame
         createNew.addActionListener(e -> {
 
             dispose();
-            SwingUtilities.invokeLater(FileCreatorFrame::new);
+            SwingUtilities.invokeLater(FileCreatorPane::new);
 
         });
     }
@@ -109,7 +110,7 @@ public class FileLoaderFrame extends JFrame
         {
             dispose();
 
-            SwingUtilities.invokeLater(FileCreatorFrame::new);
+            SwingUtilities.invokeLater(FileCreatorPane::new);
         }
     }
 }

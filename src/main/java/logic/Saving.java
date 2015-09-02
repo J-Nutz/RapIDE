@@ -4,7 +4,6 @@ package logic;
  * Created by Jonah on 7/23/2015.
  */
 
-import frames.FileCreatorFrame;
 import frames.FileLoaderFrame;
 import frames.MainFrame;
 import panes.FileCreatorPane;
@@ -12,6 +11,8 @@ import panes.FileCreatorPane;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+
+import static logic.RemoveChars.removeBannedChars;
 
 public class Saving extends MainFrame
 {
@@ -21,21 +22,22 @@ public class Saving extends MainFrame
 
     public static void saveFile() throws IOException
     {
-        if(FileCreatorPane.FileName.toString() == null)
+        if(FileCreatorPane.FileName != null)
         {
-            save(FileLoaderFrame.selectedSave);
+            save(FileCreatorPane.FileName);
         }
         else
         {
-            save(FileCreatorPane.FileName.toString());
+            save(FileLoaderFrame.selectedSave);
         }
     }
 
     public static void save(String fileToSave) throws IOException
     {
-        System.out.println("Saving: " + FileCreatorFrame.FileName);
+        String saveFile = removeBannedChars(fileToSave);
+        System.out.println("Saving: " + saveFile);
 
-        FileWriter mFileWriter = new FileWriter(mFile = new File(fileDirectory, fileToSave));
+        FileWriter mFileWriter = new FileWriter(mFile = new File(fileDirectory, saveFile));
         mFileWriter.write(mTextArea.getText());
         mFileWriter.close();
     }

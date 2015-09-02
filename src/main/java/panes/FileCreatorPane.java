@@ -12,22 +12,28 @@ import static logic.Saving.save;
 
 public class FileCreatorPane extends JOptionPane
 {
-    public static Object FileName;
+    public static String FileName;
 
     public FileCreatorPane()
     {
-        FileName = JOptionPane.showInputDialog(null,
-                "Enter Name Of New File", "File Loader",
-                JOptionPane.QUESTION_MESSAGE);
-        mTextArea.setText("");
+        FileName = JOptionPane.showInputDialog("Enter Name Of New File");
 
-        try
+        if(FileName == null)
         {
-            save(FileName.toString());
+            System.out.println("Da Faq?");
         }
-        catch(IOException e1)
+        else
         {
-            e1.printStackTrace();
+            mTextArea.setText("");
+
+            try
+            {
+                save(FileName);
+            }
+            catch(IOException e)
+            {
+                e.printStackTrace();
+            }
         }
     }
 }

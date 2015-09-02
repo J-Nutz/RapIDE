@@ -8,7 +8,6 @@ import java.io.File;
 
 public class GetFileList
 {
-
     public static boolean hasSaves = false;
 
     public static void GetFiles()
@@ -21,7 +20,8 @@ public class GetFileList
 
         if (listOfFiles != null)
         {
-            for (File file : listOfFiles)
+            hasSaves = true;
+            /*for (File file : listOfFiles)
             {
                 if (file.isFile())
                 {
@@ -31,7 +31,7 @@ public class GetFileList
                 {
                     System.out.println("Fucked M8");
                 }
-            }
+            }*/
         }
     }
 

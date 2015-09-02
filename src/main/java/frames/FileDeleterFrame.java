@@ -2,6 +2,8 @@ package frames;/*
  * Created by Jonah on 8/3/2015.
  */
 
+import panes.FileCreatorPane;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.File;
@@ -15,6 +17,9 @@ public class FileDeleterFrame extends JFrame
     private JButton accept;
     private JButton cancel;
 
+    public static String adDir = System.getenv("APPDATA");
+    public static String pathToSaves = adDir + "\\RapIDE\\saves\\";
+
     public FileDeleterFrame()
     {
         mFLFPanel = new JPanel();
@@ -26,7 +31,7 @@ public class FileDeleterFrame extends JFrame
 
         FLFCreateView();
         setSavesComboBox();
-        //ifNoSaves();
+        closeIfNoSaves();
         acceptActionListener();
         cancelActionListener();
     }
@@ -55,9 +60,6 @@ public class FileDeleterFrame extends JFrame
             Object selectedSaveObj = savesComboBox.getSelectedItem();
             String selectedSave = selectedSaveObj.toString();
 
-            String adDir = System.getenv("APPDATA");
-            String pathToSaves = adDir + "\\RapIDE\\saves\\";
-
             try
             {
                 File fileToDelete = new File(pathToSaves + selectedSave);
@@ -65,18 +67,14 @@ public class FileDeleterFrame extends JFrame
                 if(fileToDelete.delete())
                 {
                     System.out.println(selectedSave + " File Deleted");
-
-                    SwingUtilities.invokeLater(FileLoaderFrame::new);
+                    closeIfNoSaves();
+                    MainFrame.mTextArea.setText("");
                 }
             }
             catch(Exception de)
             {
                 System.out.println("Error: " + de);
             }
-
-            MainFrame.mTextArea.setText("");
-
-            dispose();
         });
     }
 
@@ -87,8 +85,7 @@ public class FileDeleterFrame extends JFrame
 
     public void setSavesComboBox()
     {
-        String adDir = System.getenv("APPDATA");
-        String pathToSaves = adDir + "\\RapIDE\\saves";
+        savesComboBox.removeAllItems();
 
         File savesFolder = new File(pathToSaves);
         File[] listOfFiles = savesFolder.listFiles();
@@ -107,5 +104,41 @@ public class FileDeleterFrame extends JFrame
                 }
             }
         }
+    }
+
+    public void closeIfNoSaves()
+    {
+        File savesFolder = new File(pathToSaves);
+
+        if(savesFolder.isDirectory()){
+
+            if(savesFolder.list().length > 0){
+
+                System.out.println("Directory is not empty!");
+
+            }else{
+
+                System.out.println("Directory is empty!");
+                dispose();
+                SwingUtilities.invokeLater(FileCreatorPane::new);
+
+            }
+
+        }else{
+
+            System.out.println("This is not a directory");
+
+        }
+
+        /*if()
+        {
+            System.out.println("Does Have Saves");
+        }
+        else
+        {
+            System.out.println("Has Saves");
+            dispose();
+            SwingUtilities.invokeLater(FileCreatorPane::new);
+        }*/
     }
 }
