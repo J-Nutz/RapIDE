@@ -6,4 +6,4 @@ Created and Maintained by J-Nutz
 
 Twitter.com/J-Nutz84
 
-Feel Free To Ask For Features!
+Check Up On 'http://j-nutz.github.io/RapIDE/' For Any Changes, Tutorials Or To Request Features!
