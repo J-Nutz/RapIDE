@@ -7,8 +7,10 @@ import keyBindings.SavingKB;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.io.IOException;
 
 import static logic.FolderCreator.createFolders;
+import static logic.Saving.saveFile;
 
 /*
  * Created by Jonah on 7/2/2015.
@@ -82,6 +84,7 @@ public class MainFrame extends JFrame
         lookAndFeel();
 
         SwingUtilities.invokeLater(FileLoaderFrame::new);
+        beforeExit();
     }
 
     private void createView()
@@ -118,6 +121,7 @@ public class MainFrame extends JFrame
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         mTextArea.setBorder(BorderFactory.createCompoundBorder(border,
                 BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        mTextArea.setFont(new Font("Courier New", Font.PLAIN, 16));
 
         //RhymeList Shenanigans
         rhymeListDisplay.setFixedCellWidth(100);
@@ -159,6 +163,25 @@ public class MainFrame extends JFrame
         {
             e.printStackTrace();
         }*/
+    }
+
+    public void beforeExit()
+    {
+        addWindowListener(new java.awt.event.WindowAdapter()
+        {
+            @Override
+            public void windowClosing(java.awt.event.WindowEvent windowEvent)
+            {
+                try
+                {
+                    saveFile();
+                } catch(IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
     public static void main(String[] args)
