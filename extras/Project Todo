@@ -25,6 +25,12 @@ Add:
             Version 0.0.8.b
 
     - Needs huge cleanup
+    - Button under SL List to clear list and get new search??
+    - Settings
+        - Color changer
+        - How many SL words to add to list
+        - Save automatically?? Every 5m, 10m, 30m, 1h?
+        - Font Changer, Font, Style, Size
 
 Tomorrow:
     - Add key features
@@ -38,6 +44,7 @@ Eventually:
 
 Bugs:
     - Can't rename file after renaming it once *Fixed*
+    - File list doesn't update on file delete *Fixed*
 
 ------------------------------------------------
 ||||||||||||||||||||||||||||||||||||||||||||||||

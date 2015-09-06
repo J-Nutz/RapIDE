@@ -67,6 +67,7 @@ public class FileDeleterFrame extends JFrame
                 if(fileToDelete.delete())
                 {
                     System.out.println(selectedSave + " File Deleted");
+                    setSavesComboBox();
                     closeIfNoSaves();
                     MainFrame.mTextArea.setText("");
                 }
