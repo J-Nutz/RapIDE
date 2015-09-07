@@ -1,4 +1,4 @@
-function alertUser(alertMsg)
+function alertUser(msg)
 {
-  alert(alertMsg);
+  alert(msg);
 }

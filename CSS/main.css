@@ -1,6 +1,58 @@
-#mP {
+#mHeader {
 
-  font-size: 24px;
   text-align: center;
+  font-size: 48px;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  padding: 25px;
+  border-color: white;
+  /*color: yellow;*/
+  text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+  background-color: black;
 
+}
+
+#menu {
+
+  text-align: center;
+  font-size: 28px;
+  padding: 5px;
+  background-color: white;
+
+}
+
+#mSection {
+
+  color: white;
+  background-color: black;
+  padding: 15px;
+  height: 100px;
+  width: 200px;
+
+}
+
+#mSide {
+
+  background-color: black;
+  padding: 5px;
+  float: right;
+  color: white;
+  height: 300px;
+
+}
+
+#mFooter {
+
+  color: white;
+  text-align: center;
+  background-color: black;
+  padding: 10px;
+  clear: both;
+
+}
+
+body {
+  background-color: black;
+  border-color: white;
+  border-style: solid;
+  border-width: medium;
 }
