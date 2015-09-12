@@ -42,6 +42,9 @@ public class FileLoaderPane extends JOptionPane
             JOptionPane.PLAIN_MESSAGE, null,
             result, result[0]);
 
-        readingSavedFile(selectedValue.toString());
+        if(selectedValue != null)
+        {
+            readingSavedFile(selectedValue.toString());
+        }
     }
 }

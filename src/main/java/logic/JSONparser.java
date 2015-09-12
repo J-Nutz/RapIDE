@@ -5,8 +5,6 @@ package logic;
  */
 
 import frames.MainFrame;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class JSONparser extends MainFrame
 {
@@ -14,7 +12,7 @@ public class JSONparser extends MainFrame
 
     public static void parseJSON(String JSONinput)
     {
-        final JSONArray JSONrtrn = new JSONArray(JSONinput);
+        /*JSONArray JSONrtrn = new JSONArray(JSONinput);
 
         rhymeList.removeAllElements();
 
@@ -24,6 +22,9 @@ public class JSONparser extends MainFrame
             SLrtrn = parsedObj.get("word").toString();
 
             rhymeList.addElement(SLrtrn);
-        }
+        }*/
+
+        System.out.println(JSONinput);
+
     }
 }

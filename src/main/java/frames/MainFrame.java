@@ -54,7 +54,7 @@ public class MainFrame extends JFrame
         mCreateFile = new JMenu("Create New File");
         mSoundsLike = new JMenu("Sounds Like");
         mFileDeleter = new JMenu("Delete Files");
-        mSave = new JMenu("Save");
+        mSave = new JMenu();
         mOpenFile = new JMenu("Open File");
         mRenameFile = new JMenu("Rename File");
 
@@ -107,12 +107,20 @@ public class MainFrame extends JFrame
         mPanel.add(mTextArea, BorderLayout.CENTER);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
-        mMenuBar.add(mFileDeleter);
-        mMenuBar.add(mCreateFile);
-        mMenuBar.add(mSoundsLike);
         mMenuBar.add(mSave);
         mMenuBar.add(mOpenFile);
+        mMenuBar.add(mCreateFile);
         mMenuBar.add(mRenameFile);
+        mMenuBar.add(mFileDeleter);
+        mMenuBar.add(mSoundsLike);
+
+        //MenuBar Shenanigans
+        mMenuBar.setBackground(Color.white);
+
+        //Menu Item Shenanigans
+        ImageIcon saveIcon = new ImageIcon("C:\\Users\\Jonah\\Desktop\\saveLogo.png");
+        mSave.setIcon(saveIcon);
+
 
         //TextArea Shenanigans
         mTextArea.setLineWrap(true);
@@ -175,7 +183,8 @@ public class MainFrame extends JFrame
                 try
                 {
                     saveFile();
-                } catch(IOException e)
+                }
+                catch(IOException e)
                 {
                     e.printStackTrace();
                 }

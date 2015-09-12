@@ -26,7 +26,8 @@ public class APIhitter
     {
         try
         {
-            slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=50");
+            //slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=50");
+            slAPI = new URL("http://rhymebrain.com/talk?function=getRhymes&word=" + SLinput);
         }
         catch (MalformedURLException e)
         {
