@@ -132,7 +132,7 @@ public class MainFrame extends JFrame
         mTextArea.setFont(new Font("Courier New", Font.PLAIN, 16));
 
         //RhymeList Shenanigans
-        rhymeListDisplay.setFixedCellWidth(100);
+        rhymeListDisplay.setFixedCellWidth(125);
         rhymeListDisplay.setFixedCellHeight(30);
         rhymeListDisplay.setFont(new Font("Courier New", Font.PLAIN, 15));
 

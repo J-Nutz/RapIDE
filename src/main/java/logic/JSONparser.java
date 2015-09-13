@@ -5,14 +5,18 @@ package logic;
  */
 
 import frames.MainFrame;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
 public class JSONparser extends MainFrame
 {
     public static String SLrtrn;
+    public static String StringScore;
+    public static int Score;
 
     public static void parseJSON(String JSONinput)
     {
-        /*JSONArray JSONrtrn = new JSONArray(JSONinput);
+        JSONArray JSONrtrn = new JSONArray(JSONinput);
 
         rhymeList.removeAllElements();
 
@@ -21,10 +25,23 @@ public class JSONparser extends MainFrame
             JSONObject parsedObj = (JSONObject) JSONrtrn.get(i);
             SLrtrn = parsedObj.get("word").toString();
 
-            rhymeList.addElement(SLrtrn);
-        }*/
+            StringScore = parsedObj.get("score").toString();
+            //System.out.println(Score);
 
-        System.out.println(JSONinput);
+            Score = Integer.parseInt(StringScore);
 
+            if(Score > 200)
+            {
+                rhymeList.addElement(SLrtrn);
+            }
+            else
+            {
+                rhymeList.addElement("No");
+                rhymeList.addElement("Rhyming");
+                rhymeList.addElement("Words");
+
+                break;
+            }
+        }
     }
 }

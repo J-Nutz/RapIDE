@@ -18,16 +18,16 @@ public class APIhitter
     public static String inputLine;
 
     public static URL slAPI = null;
-    public static URLConnection APIcnctr = null;
+    public static URLConnection APIcnctr;
 
-    public static BufferedReader APIreader = null;
+    public static BufferedReader APIreader;
 
     public static void hitAPI(String SLinput)
     {
         try
         {
-            //slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=50");
-            slAPI = new URL("http://rhymebrain.com/talk?function=getRhymes&word=" + SLinput);
+            //slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=3");  //API #1
+            slAPI = new URL("http://rhymebrain.com/talk?function=getRhymes&word=" + SLinput + "&maxResults=50"); //API #2
         }
         catch (MalformedURLException e)
         {
@@ -35,7 +35,6 @@ public class APIhitter
         }
         try
         {
-            assert slAPI != null;
             APIcnctr = slAPI.openConnection();
         }
         catch (IOException e)
@@ -44,7 +43,6 @@ public class APIhitter
         }
         try
         {
-            assert APIcnctr != null;
             APIreader = new BufferedReader(new InputStreamReader(
                     APIcnctr.getInputStream()));
         }
@@ -53,22 +51,24 @@ public class APIhitter
             e.printStackTrace();
         }
 
+        String toInput = "";
+
         try
         {
-            assert APIreader != null;
             while ((inputLine = APIreader.readLine()) != null)
             {
-                parseJSON(inputLine);
+                toInput = toInput + inputLine; //Use if using API #2
+                //parseJSON(inputLine)  //Use if using API #1
             }
             try
             {
+                parseJSON(toInput); //Use if using API #2
                 APIreader.close();
             }
             catch (IOException e)
             {
                 e.printStackTrace();
             }
-
         }
         catch (IOException e)
         {
