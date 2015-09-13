@@ -26,22 +26,21 @@ public class JSONparser extends MainFrame
             SLrtrn = parsedObj.get("word").toString();
 
             StringScore = parsedObj.get("score").toString();
-            //System.out.println(Score);
 
             Score = Integer.parseInt(StringScore);
 
-            if(Score > 200)
+            if(Score >= 200)
             {
                 rhymeList.addElement(SLrtrn);
             }
-            else
+            /*else if(Score < 200)
             {
                 rhymeList.addElement("No");
                 rhymeList.addElement("Rhyming");
                 rhymeList.addElement("Words");
 
                 break;
-            }
+            }*/
         }
     }
 }

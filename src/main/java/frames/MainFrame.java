@@ -33,6 +33,8 @@ public class MainFrame extends JFrame
     public static JMenu mOpenFile;
     public static JMenu mRenameFile;
 
+    private JButton rlClear;
+
     public static DefaultListModel<String> rhymeList;
 
     public JScrollPane slScrollPane;
@@ -54,7 +56,7 @@ public class MainFrame extends JFrame
         mCreateFile = new JMenu("Create New File");
         mSoundsLike = new JMenu("Sounds Like");
         mFileDeleter = new JMenu("Delete Files");
-        mSave = new JMenu();
+        mSave = new JMenu("Save");
         mOpenFile = new JMenu("Open File");
         mRenameFile = new JMenu("Rename File");
 
@@ -62,6 +64,8 @@ public class MainFrame extends JFrame
         rhymeListDisplay = new JList<>(rhymeList);
 
         slScrollPane = new JScrollPane(rhymeListDisplay);
+
+        rlClear = new JButton("Clear Rhyming Words");
 
         //Pre Init
         createFolders();
@@ -107,6 +111,8 @@ public class MainFrame extends JFrame
         mPanel.add(mTextArea, BorderLayout.CENTER);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
+        mPanel.add(rlClear, BorderLayout.PAGE_END);
+
         mMenuBar.add(mSave);
         mMenuBar.add(mOpenFile);
         mMenuBar.add(mCreateFile);
@@ -135,10 +141,17 @@ public class MainFrame extends JFrame
         rhymeListDisplay.setFixedCellWidth(125);
         rhymeListDisplay.setFixedCellHeight(30);
         rhymeListDisplay.setFont(new Font("Courier New", Font.PLAIN, 15));
+        rhymeListDisplay.setBackground(Color.lightGray);
 
         //slScrollPane Shenanigans
         slScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         slScrollPane.setBorder(null);
+
+        //rlClear Shenanigans
+        rlClear.addActionListener(e -> {
+            rhymeList.removeAllElements();
+            setInitialRList();
+        });
 
         pack();
         setVisible(true);
