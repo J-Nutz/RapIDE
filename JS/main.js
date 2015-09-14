@@ -4,7 +4,7 @@ function change()
   x.innerHTML = "New Side!";
 }
 
-function calculate()
+function getInfo()
 {
 
   var payedV = document.getElementById("payed").value;
@@ -18,7 +18,7 @@ function calculate()
 
 }
 
-function getInfo(payed, recieved, gPerDub)
+function calculate(payed, recieved, gPerDub)
 {
 
   var numOfDubs = Math.round(recieved / gPerDub);
