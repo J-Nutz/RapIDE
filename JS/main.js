@@ -1,4 +1,30 @@
-function alertUser(msg)
+function change()
 {
-  alert(msg);
+  var x = document.getElementById("mSide");
+  x.innerHTML = "New Side!";
+}
+
+function calculate()
+{
+
+  var payedV = document.getElementById("payed").value;
+  var recievedV = document.getElementById("recieved").value;
+  var giveV = document.getElementById("given").value;
+
+  //Param #1, How Much You payed
+  //Param #2, How Much You Recieved
+  //Param #3, How Much Per Dub
+  getInfo(payedV, recievedV, giveV);
+
+}
+
+function getInfo(payed, recieved, gPerDub)
+{
+
+  var numOfDubs = Math.round(recieved / gPerDub);
+
+  var profit = Math.round(numOfDubs * 20 - payed);
+
+  alert("Dubs: " + numOfDubs + ": Profit: $" + profit);
+
 }
