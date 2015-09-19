@@ -7,6 +7,7 @@ package logic;
 import frames.MainFrame;
 import panes.FileCreatorPane;
 import panes.FileLoaderPane;
+import panes.FileRenamerPane;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -25,6 +26,10 @@ public class Saving extends MainFrame
         if(FileCreatorPane.FileName != null)
         {
             save(FileCreatorPane.FileName);
+        }
+        else if(FileRenamerPane.newName != null)
+        {
+            save(FileRenamerPane.newName);
         }
         else
         {
