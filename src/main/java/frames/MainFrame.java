@@ -105,7 +105,6 @@ public class MainFrame extends JFrame
 
         //Add Everything
         getContentPane().add(mPanel);
-
         mPanel.add(mMenuBar, BorderLayout.PAGE_START);
         mPanel.add(Box.createHorizontalStrut(1), BorderLayout.LINE_START);
         mPanel.add(mTextArea, BorderLayout.CENTER);
@@ -119,6 +118,7 @@ public class MainFrame extends JFrame
         mMenuBar.add(mRenameFile);
         mMenuBar.add(mFileDeleter);
         mMenuBar.add(mSoundsLike);
+
 
         //MenuBar Shenanigans
         mMenuBar.setBackground(Color.white);

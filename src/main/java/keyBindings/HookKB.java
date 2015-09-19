@@ -13,7 +13,7 @@ public class HookKB extends MainFrame
 {
     public static void hookBinding()
     {
-        String hookIn = "[Hook] \n \n [Hook]";
+        String hookIn = "[Hook] \n \n[Hook]";
 
         mTextArea.addKeyListener(new KeyListener()
         {
