@@ -148,6 +148,8 @@ public class MainFrame extends JFrame
         slScrollPane.setBorder(null);
 
         //rlClear Shenanigans
+        rlClear.setPreferredSize(new Dimension(100, 25));
+
         rlClear.addActionListener(e -> {
             rhymeList.removeAllElements();
             setInitialRList();
@@ -159,9 +161,9 @@ public class MainFrame extends JFrame
 
     public static void setInitialRList()
     {
-        for(String h : rhymes)
+        for(String r : rhymes)
         {
-            rhymeList.addElement(h);
+            rhymeList.addElement(r);
         }
     }
 
