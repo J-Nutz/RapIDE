@@ -4,9 +4,9 @@ package logic;
  * Created by Jonah on 7/23/2015.
  */
 
-import frames.FileLoaderFrame;
 import frames.MainFrame;
 import panes.FileCreatorPane;
+import panes.FileLoaderPane;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -28,7 +28,7 @@ public class Saving extends MainFrame
         }
         else
         {
-            save(FileLoaderFrame.selectedSave);
+            save(FileLoaderPane.selectedSave);
         }
     }
 

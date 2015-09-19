@@ -3,6 +3,7 @@ package frames;
 import handlers.menuItems.*;
 import keyBindings.HookKB;
 import keyBindings.SavingKB;
+import panes.FileLoaderPane;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -87,7 +88,7 @@ public class MainFrame extends JFrame
         setInitialRList();
         lookAndFeel();
 
-        SwingUtilities.invokeLater(FileLoaderFrame::new);
+        SwingUtilities.invokeLater(FileLoaderPane::new);
         beforeExit();
     }
 

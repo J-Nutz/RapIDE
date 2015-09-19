@@ -19,7 +19,8 @@ public class RhymingWordsPane extends JOptionPane
         if(wordToParse == null)
         {
             System.out.println("Da Faq?");
-        } else
+        }
+        else
         {
             APIhitter.hitAPI(wordToParse);
         }

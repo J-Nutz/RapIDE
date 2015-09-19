@@ -4,8 +4,8 @@ package handlers.menuItems;
  * Created by Jonah on 8/20/2015.
  */
 
-import frames.FileRenamerFrame;
 import frames.MainFrame;
+import panes.FileRenamerPane;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
@@ -23,7 +23,7 @@ public class FileRenamerMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            SwingUtilities.invokeLater(FileRenamerFrame::new);
+            SwingUtilities.invokeLater(FileRenamerPane::new);
         }
 
         @Override

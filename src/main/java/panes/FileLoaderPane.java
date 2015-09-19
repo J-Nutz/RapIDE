@@ -11,6 +11,8 @@ import static logic.ReadingSaveFile.readingSavedFile;
 
 public class FileLoaderPane extends JOptionPane
 {
+    public static String selectedSave;
+
     String adDir = System.getenv("APPDATA");
     String pathToSaves = adDir + "\\RapIDE\\saves";
 
@@ -45,6 +47,7 @@ public class FileLoaderPane extends JOptionPane
         if(selectedValue != null)
         {
             readingSavedFile(selectedValue.toString());
+            selectedSave = selectedValue.toString();
         }
     }
 }
