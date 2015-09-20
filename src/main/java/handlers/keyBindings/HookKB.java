@@ -1,4 +1,4 @@
-package keyBindings;
+package handlers.keyBindings;
 
 /*
  * Created by Jonah on 7/23/2015.

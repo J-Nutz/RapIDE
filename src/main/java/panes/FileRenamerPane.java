@@ -16,7 +16,7 @@ import java.nio.file.Path;
 import static logic.RemoveChars.removeBannedChars;
 import static logic.Saving.save;
 
-public class FileRenamerPane extends JOptionPane
+public class FileRenamerPane
 {
 
     public static JComboBox<Object> savesComboBox;
@@ -32,10 +32,10 @@ public class FileRenamerPane extends JOptionPane
 
         newNameTF = new JTextField("Enter New Name");
 
-        Object[] jopMessage = {"Choose File To Rename", savesComboBox, "Enter New Name Of File", newNameTF};
+        Object[] jopContent = {"Choose File To Rename", savesComboBox, "Enter New Name Of File", newNameTF};
 
         JOptionPane renamerPane = new JOptionPane();
-        renamerPane.setMessage(jopMessage);
+        renamerPane.setMessage(jopContent);
 
         renameDialog = renamerPane.createDialog(null, "File Renamer");
         renameDialog.setVisible(true);

@@ -4,8 +4,8 @@ package handlers.menuItems;
  * Created by Jonah on 8/3/2015.
  */
 
-import frames.FileDeleterFrame;
 import frames.MainFrame;
+import panes.FileDeleterPane;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
@@ -23,7 +23,7 @@ public class FileDeleterMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            SwingUtilities.invokeLater(FileDeleterFrame::new);
+            SwingUtilities.invokeLater(FileDeleterPane::new);
         }
 
         @Override
