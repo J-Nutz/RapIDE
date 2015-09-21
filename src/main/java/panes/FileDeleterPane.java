@@ -33,6 +33,7 @@ public class FileDeleterPane
             deleterDialog.dispose();
             System.out.println("Canceling");
         });
+
         //deleteFile(savesComboBox.getSelectedItem());
     }
 

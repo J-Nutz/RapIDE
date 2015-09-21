@@ -4,6 +4,8 @@ package panes;
  * Created by Jonah on 8/28/2015.
  */
 
+import local.Strings;
+
 import javax.swing.*;
 import java.io.File;
 
@@ -46,8 +48,9 @@ public class FileLoaderPane extends JOptionPane
 
         if(selectedValue != null)
         {
-            readingSavedFile(selectedValue.toString());
             selectedSave = selectedValue.toString();
+            readingSavedFile(selectedSave);
+            Strings.MainFileName = selectedSave;
         }
     }
 }

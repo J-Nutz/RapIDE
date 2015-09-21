@@ -4,6 +4,7 @@ package panes;
  * Created by Jonah on 9/19/2015.
  */
 
+import local.Strings;
 import logic.ReadingSaveFile;
 
 import javax.swing.*;
@@ -14,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static logic.RemoveChars.removeBannedChars;
-import static logic.Saving.save;
+import static logic.Saving.saving;
 
 public class FileRenamerPane
 {
@@ -55,7 +56,9 @@ public class FileRenamerPane
         try
         {
             Files.move(mPath, mPath.resolveSibling(removeBannedChars(newNameTF.getText())));
-            save(newName);
+            Strings.MainFileName = newName;
+            saving();
+            //save(newName);
         }
         catch (IOException e1)
         {

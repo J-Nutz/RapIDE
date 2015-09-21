@@ -33,6 +33,7 @@ Add:
         - Font Changer, Font, Style, Size
 
     - New Saving Logic
+    - Instead of JMenu use buttons?
 
 Tomorrow:
     - Add key features

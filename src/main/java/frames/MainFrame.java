@@ -11,7 +11,7 @@ import java.awt.*;
 import java.io.IOException;
 
 import static logic.FolderCreator.createFolders;
-import static logic.Saving.saveFile;
+import static logic.Saving.saving;
 
 /*
  * Created by Jonah on 7/2/2015.
@@ -196,7 +196,7 @@ public class MainFrame extends JFrame
             {
                 try
                 {
-                    saveFile();
+                    saving();
                 }
                 catch(IOException e)
                 {

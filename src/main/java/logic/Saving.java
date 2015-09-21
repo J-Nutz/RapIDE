@@ -5,9 +5,7 @@ package logic;
  */
 
 import frames.MainFrame;
-import panes.FileCreatorPane;
-import panes.FileLoaderPane;
-import panes.FileRenamerPane;
+import local.Strings;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -18,10 +16,8 @@ import static logic.RemoveChars.removeBannedChars;
 public class Saving extends MainFrame
 {
     public static File mFile;
-    public static String adDir = System.getenv("APPDATA");
-    public static File fileDirectory = new File(adDir + "\\RapIDE\\saves\\");
 
-    public static void saveFile() throws IOException
+    /*public static void saveFile() throws IOException
     {
         if(FileCreatorPane.FileName != null)
         {
@@ -35,14 +31,24 @@ public class Saving extends MainFrame
         {
             save(FileLoaderPane.selectedSave);
         }
-    }
+    }*/
 
-    public static void save(String fileToSave) throws IOException
+    /*public static void save(String fileToSave) throws IOException
     {
         String saveFile = removeBannedChars(fileToSave);
         System.out.println("Saving: " + saveFile);
 
-        FileWriter mFileWriter = new FileWriter(mFile = new File(fileDirectory, saveFile));
+        FileWriter mFileWriter = new FileWriter(mFile = new File(Strings.pathToSaves, saveFile));
+        mFileWriter.write(mTextArea.getText());
+        mFileWriter.close();
+    }*/
+
+    public static void saving() throws IOException
+    {
+        String saveFile = removeBannedChars(Strings.MainFileName);
+        System.out.println("Saving: " + saveFile);
+
+        FileWriter mFileWriter = new FileWriter(mFile = new File(Strings.pathToSaves, saveFile));
         mFileWriter.write(mTextArea.getText());
         mFileWriter.close();
     }
