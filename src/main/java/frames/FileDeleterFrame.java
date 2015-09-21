@@ -2,6 +2,7 @@ package frames;/*
  * Created by Jonah on 8/3/2015.
  */
 
+import local.Strings;
 import panes.FileCreatorPane;
 
 import javax.swing.*;
@@ -17,8 +18,8 @@ public class FileDeleterFrame extends JFrame
     private JButton accept;
     private JButton cancel;
 
-    public static String adDir = System.getenv("APPDATA");
-    public static String pathToSaves = adDir + "\\RapIDE\\saves\\";
+    //public static String adDir = System.getenv("APPDATA");
+    //public static String pathToSaves = adDir + "\\RapIDE\\saves\\";
 
     public FileDeleterFrame()
     {
@@ -62,7 +63,7 @@ public class FileDeleterFrame extends JFrame
 
             try
             {
-                File fileToDelete = new File(pathToSaves + selectedSave);
+                File fileToDelete = new File(Strings.pathToSaves + selectedSave);
 
                 if(fileToDelete.delete())
                 {
@@ -88,18 +89,18 @@ public class FileDeleterFrame extends JFrame
     {
         savesComboBox.removeAllItems();
 
-        File savesFolder = new File(pathToSaves);
+        File savesFolder = new File(Strings.pathToSaves);
         File[] listOfFiles = savesFolder.listFiles();
 
-        if (listOfFiles != null)
+        if(listOfFiles != null)
         {
-            for (File file : listOfFiles)
+            for(File file : listOfFiles)
             {
-                if (file.isFile())
+                if(file.isFile())
                 {
                     savesComboBox.addItem(file.getName());
                 }
-                else if (file.isDirectory())
+                else if(file.isDirectory())
                 {
                     System.out.println("Fucked M8");
                 }
@@ -109,37 +110,24 @@ public class FileDeleterFrame extends JFrame
 
     public void closeIfNoSaves()
     {
-        File savesFolder = new File(pathToSaves);
+        File savesFolder = new File(Strings.pathToSaves);
 
-        if(savesFolder.isDirectory()){
-
-            if(savesFolder.list().length > 0){
-
+        if(savesFolder.isDirectory())
+        {
+            if(savesFolder.list().length > 0)
+            {
                 System.out.println("Directory is not empty!");
-
-            }else{
-
+            }
+            else
+            {
                 System.out.println("Directory is empty!");
                 dispose();
                 SwingUtilities.invokeLater(FileCreatorPane::new);
-
             }
-
-        }else{
-
-            System.out.println("This is not a directory");
-
-        }
-
-        /*if()
-        {
-            System.out.println("Does Have Saves");
         }
         else
         {
-            System.out.println("Has Saves");
-            dispose();
-            SwingUtilities.invokeLater(FileCreatorPane::new);
-        }*/
+            System.out.println("This is not a directory");
+        }
     }
 }

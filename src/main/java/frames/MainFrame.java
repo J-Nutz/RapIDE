@@ -1,8 +1,9 @@
 package frames;
 
+import handlers.keyBindings.HookKB;
+import handlers.keyBindings.SavingKB;
 import handlers.menuItems.*;
-import keyBindings.HookKB;
-import keyBindings.SavingKB;
+import panes.FileLoaderPane;
 
 import javax.swing.*;
 import javax.swing.border.Border;
@@ -33,7 +34,7 @@ public class MainFrame extends JFrame
     public static JMenu mOpenFile;
     public static JMenu mRenameFile;
 
-    private JButton rlClear;
+    private JButton rlClearBtn;
 
     public static DefaultListModel<String> rhymeList;
 
@@ -41,8 +42,8 @@ public class MainFrame extends JFrame
 
     public static Color mpColor = new Color(88, 88, 88);
 
-    public static String[] rhymes = {"Press", "The", "Sounds", "Like", "Button", "To", "Search", "For", "List",
-                                     "Of", "Words", "That", "Sound", "Similar", "To", "Each", "Other"};
+    public static String[] defaultList = {"Press", "The", "Sounds", "Like", "Button", "To", "Search", "For", "List",
+                                          "Of", "Words", "That", "Sound", "Similar", "To", "Each", "Other"};
 
     public MainFrame()
     {
@@ -65,7 +66,7 @@ public class MainFrame extends JFrame
 
         slScrollPane = new JScrollPane(rhymeListDisplay);
 
-        rlClear = new JButton("Clear Rhyming Words");
+        rlClearBtn = new JButton("Clear Rhyming Words");
 
         //Pre Init
         createFolders();
@@ -84,10 +85,9 @@ public class MainFrame extends JFrame
         SavingKB.savingBinding();
 
         //Post Init
-        setInitialRList();
+        setInitialRhymeList();
         lookAndFeel();
-
-        SwingUtilities.invokeLater(FileLoaderFrame::new);
+        SwingUtilities.invokeLater(FileLoaderPane::new);
         beforeExit();
     }
 
@@ -110,7 +110,7 @@ public class MainFrame extends JFrame
         mPanel.add(mTextArea, BorderLayout.CENTER);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
-        mPanel.add(rlClear, BorderLayout.PAGE_END);
+        mPanel.add(rlClearBtn, BorderLayout.PAGE_END);
 
         mMenuBar.add(mSave);
         mMenuBar.add(mOpenFile);
@@ -126,7 +126,6 @@ public class MainFrame extends JFrame
         //Menu Item Shenanigans
         ImageIcon saveIcon = new ImageIcon("C:\\Users\\Jonah\\Desktop\\saveLogo.png");
         mSave.setIcon(saveIcon);
-
 
         //TextArea Shenanigans
         mTextArea.setLineWrap(true);
@@ -147,21 +146,23 @@ public class MainFrame extends JFrame
         slScrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         slScrollPane.setBorder(null);
 
-        //rlClear Shenanigans
-        rlClear.addActionListener(e -> {
+        //rlClearBtn Shenanigans
+        rlClearBtn.setPreferredSize(new Dimension(100, 25));
+
+        rlClearBtn.addActionListener(e -> {
             rhymeList.removeAllElements();
-            setInitialRList();
+            setInitialRhymeList();
         });
 
         pack();
         setVisible(true);
     }
 
-    public static void setInitialRList()
+    public static void setInitialRhymeList()
     {
-        for(String h : rhymes)
+        for(String r : defaultList)
         {
-            rhymeList.addElement(h);
+            rhymeList.addElement(r);
         }
     }
 
@@ -203,7 +204,6 @@ public class MainFrame extends JFrame
                 }
             }
         });
-
     }
 
     public static void main(String[] args)

@@ -32,6 +32,8 @@ Add:
         - Save automatically?? Every 5m, 10m, 30m, 1h? (Currently Saves On Close)
         - Font Changer, Font, Style, Size
 
+    - New Saving Logic
+
 Tomorrow:
     - Add key features
     - Optimize (After Features)
@@ -45,6 +47,7 @@ Eventually:
 Bugs:
     - Can't rename file after renaming it once *Fixed*
     - File list doesn't update on file delete *Fixed*
+    - Renaming file then saving it with key binding, saves as original name *Might Be Fixed*
 
 ------------------------------------------------
 ||||||||||||||||||||||||||||||||||||||||||||||||
