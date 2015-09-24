@@ -24,7 +24,7 @@ public class SavingMIH extends Saving
         {
             try
             {
-                saving();
+                save();
             }
             catch(IOException e1)
             {

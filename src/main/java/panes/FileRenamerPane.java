@@ -15,7 +15,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import static logic.RemoveChars.removeBannedChars;
-import static logic.Saving.saving;
+import static logic.Saving.save;
 
 public class FileRenamerPane
 {
@@ -55,18 +55,15 @@ public class FileRenamerPane
 
         try
         {
-            Files.move(mPath, mPath.resolveSibling(removeBannedChars(newNameTF.getText())));
+            Files.move(mPath, mPath.resolveSibling(removeBannedChars(newName)));
             Strings.MainFileName = newName;
-            saving();
-            //save(newName);
+            save();
         }
         catch (IOException e1)
         {
             e1.printStackTrace();
         }
-
         ifNoSaves();
-
     }
 
     public void setSavesComboBox()
@@ -93,8 +90,8 @@ public class FileRenamerPane
         }
     }
 
-    public void ifNoSaves(){
-
+    public void ifNoSaves()
+    {
         if(savesComboBox.getItemCount() == 0)
         {
             renameDialog.dispose();
@@ -102,5 +99,4 @@ public class FileRenamerPane
             SwingUtilities.invokeLater(FileCreatorPane::new);
         }
     }
-
 }

@@ -10,7 +10,7 @@ import javax.swing.*;
 import java.io.IOException;
 
 import static frames.MainFrame.mTextArea;
-import static logic.Saving.saving;
+import static logic.Saving.save;
 
 public class FileCreatorPane extends JOptionPane
 {
@@ -32,8 +32,7 @@ public class FileCreatorPane extends JOptionPane
 
             try
             {
-                //save(FileName);
-                saving();
+                save();
             }
             catch(IOException e)
             {

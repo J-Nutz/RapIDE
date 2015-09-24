@@ -15,41 +15,16 @@ import static logic.RemoveChars.removeBannedChars;
 
 public class Saving extends MainFrame
 {
-    public static File mFile;
-
-    /*public static void saveFile() throws IOException
+    public static void save() throws IOException
     {
-        if(FileCreatorPane.FileName != null)
+        if(Strings.MainFileName != null)
         {
-            save(FileCreatorPane.FileName);
+            String saveFileName = removeBannedChars(Strings.MainFileName);
+            System.out.println("Saving: " + saveFileName);
+
+            FileWriter mFileWriter = new FileWriter(new File(Strings.pathToSaves, saveFileName));
+            mFileWriter.write(mTextArea.getText());
+            mFileWriter.close();
         }
-        else if(FileRenamerPane.newName != null)
-        {
-            save(FileRenamerPane.newName);
-        }
-        else
-        {
-            save(FileLoaderPane.selectedSave);
-        }
-    }*/
-
-    /*public static void save(String fileToSave) throws IOException
-    {
-        String saveFile = removeBannedChars(fileToSave);
-        System.out.println("Saving: " + saveFile);
-
-        FileWriter mFileWriter = new FileWriter(mFile = new File(Strings.pathToSaves, saveFile));
-        mFileWriter.write(mTextArea.getText());
-        mFileWriter.close();
-    }*/
-
-    public static void saving() throws IOException
-    {
-        String saveFile = removeBannedChars(Strings.MainFileName);
-        System.out.println("Saving: " + saveFile);
-
-        FileWriter mFileWriter = new FileWriter(mFile = new File(Strings.pathToSaves, saveFile));
-        mFileWriter.write(mTextArea.getText());
-        mFileWriter.close();
     }
 }

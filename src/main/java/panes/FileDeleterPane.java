@@ -14,27 +14,32 @@ public class FileDeleterPane
 {
     public static JComboBox<Object> savesComboBox = new JComboBox<>();
     public static JDialog deleterDialog;
+    public static JButton cancelBtn = new JButton("Cancel");
 
     public FileDeleterPane()
     {
-        closeIfNoSaves();
         setSavesComboBox();
 
-        JButton cancelBtn = new JButton("Cancel");
         Object[] jopContent = {"Choose File To Delete", savesComboBox, cancelBtn};
 
         JOptionPane deleterPane = new JOptionPane();
         deleterPane.setMessage(jopContent);
 
-        deleterDialog = deleterPane.createDialog(null, "File Deleter");
+        final JDialog deleterDialog = deleterPane.createDialog(null, "File Deleter");
         deleterDialog.setVisible(true);
 
-        cancelBtn.addActionListener(e -> {
-            deleterDialog.dispose();
-            System.out.println("Canceling");
-        });
+        closeIfNoSaves();
 
-        //deleteFile(savesComboBox.getSelectedItem());
+        System.out.println("Value: " + deleterPane.getValue());
+
+        if(deleterPane.getValue().equals(0))
+        {
+            deleteFile(savesComboBox.getSelectedItem());
+        } else
+        {
+            System.out.println("Exited Without Deleting File");
+        }
+
     }
 
     public static void setSavesComboBox()
@@ -54,33 +59,25 @@ public class FileDeleterPane
                 }
                 else if(file.isDirectory())
                 {
-                    System.out.println("Fucked M8");
+                    System.out.println("No Files");
                 }
             }
         }
     }
 
-    public static void closeIfNoSaves()
+    public static boolean closeIfNoSaves()
     {
-        File savesFolder = new File(Strings.pathToSaves);
+        boolean empty = false;
 
-        if(savesFolder.isDirectory())
+        if(savesComboBox.getItemCount() == 0)
         {
-            if(savesFolder.list().length > 0)
-            {
-                System.out.println("Directory is not empty!");
-            }
-            else
-            {
-                System.out.println("Directory is empty!");
-                deleterDialog.dispose();
-                SwingUtilities.invokeLater(FileCreatorPane::new);
-            }
+            empty = true;
+            System.out.println("Directory Is Empty, Closing Deleter");
+            SwingUtilities.invokeLater(FileCreatorPane::new);
+            deleterDialog.dispose();
         }
-        else
-        {
-            System.out.println("This is not a directory");
-        }
+
+        return empty;
     }
 
     public static void deleteFile(Object toDelete)
@@ -91,11 +88,20 @@ public class FileDeleterPane
 
             if(fileToDelete.delete())
             {
+                MainFrame.mTextArea.setText("");
                 System.out.println(toDelete + " File Deleted");
                 setSavesComboBox();
-                closeIfNoSaves();
-                MainFrame.mTextArea.setText("");
-                SwingUtilities.invokeLater(FileLoaderPane::new);
+                Strings.MainFileName = null;
+                if(closeIfNoSaves())
+                {
+                    System.out.println("Closing, No Saves");
+                    //SwingUtilities.invokeLater(FileCreatorPane::new);
+                } else
+                {
+                    System.out.println("Still Saves...?");
+                    SwingUtilities.invokeLater(FileLoaderPane::new);
+                }
+
             }
         }
         catch(Exception de)

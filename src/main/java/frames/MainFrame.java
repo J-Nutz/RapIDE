@@ -3,6 +3,8 @@ package frames;
 import handlers.keyBindings.HookKB;
 import handlers.keyBindings.SavingKB;
 import handlers.menuItems.*;
+import panes.FileCreatorPane;
+import panes.FileDeleterPane;
 import panes.FileLoaderPane;
 
 import javax.swing.*;
@@ -11,7 +13,8 @@ import java.awt.*;
 import java.io.IOException;
 
 import static logic.FolderCreator.createFolders;
-import static logic.Saving.saving;
+import static logic.Saving.save;
+import static panes.FileDeleterPane.savesComboBox;
 
 /*
  * Created by Jonah on 7/2/2015.
@@ -87,7 +90,16 @@ public class MainFrame extends JFrame
         //Post Init
         setInitialRhymeList();
         lookAndFeel();
-        SwingUtilities.invokeLater(FileLoaderPane::new);
+
+        FileDeleterPane.setSavesComboBox();
+        if(savesComboBox.getItemCount() > 0)
+        {
+            SwingUtilities.invokeLater(FileLoaderPane::new);
+        } else
+        {
+            SwingUtilities.invokeLater(FileCreatorPane::new);
+        }
+
         beforeExit();
     }
 
@@ -196,12 +208,14 @@ public class MainFrame extends JFrame
             {
                 try
                 {
-                    saving();
+                    save();
                 }
                 catch(IOException e)
                 {
                     e.printStackTrace();
+                    System.out.println("I Cwash...");
                 }
+
             }
         });
     }

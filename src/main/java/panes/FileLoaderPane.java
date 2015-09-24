@@ -15,10 +15,7 @@ public class FileLoaderPane extends JOptionPane
 {
     public static String selectedSave;
 
-    String adDir = System.getenv("APPDATA");
-    String pathToSaves = adDir + "\\RapIDE\\saves";
-
-    File savesFolder = new File(pathToSaves);
+    File savesFolder = new File(Strings.pathToSaves);
     File[] listOfFiles = savesFolder.listFiles();
     Object[] result = new Object[listOfFiles.length];
     int i = 0;
