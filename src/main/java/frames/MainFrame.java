@@ -71,6 +71,8 @@ public class MainFrame extends JFrame
 
         rlClearBtn = new JButton("Clear Rhyming Words");
 
+        long startTime = System.nanoTime();
+
         //Pre Init
         createFolders();
 
@@ -101,6 +103,12 @@ public class MainFrame extends JFrame
         }
 
         beforeExit();
+
+        long endTime = System.nanoTime();
+        long totalTime = (endTime - startTime);
+
+        System.out.println("Loaded In " + totalTime / 1000000 + " Milliseconds");
+
     }
 
     private void createView()

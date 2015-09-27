@@ -32,7 +32,7 @@ Add:
         - Save automatically?? Every 5m, 10m, 30m, 1h? (Currently Saves On Close)
         - Font Changer, Font, Style, Size
 
-    - New Saving Logic
+    - New Saving Logic *DONE*
     - Instead of JMenu use buttons?
 
 Tomorrow:

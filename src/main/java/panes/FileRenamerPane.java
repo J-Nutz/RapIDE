@@ -53,25 +53,28 @@ public class FileRenamerPane
 
         newName = newNameTF.getText();
 
-        try
+        if(renamerPane.getValue().equals(0))
         {
-            Files.move(mPath, mPath.resolveSibling(removeBannedChars(newName)));
-            Strings.MainFileName = newName;
-            save();
-        }
-        catch (IOException e1)
+            try
+            {
+                Files.move(mPath, mPath.resolveSibling(removeBannedChars(newName)));
+                Strings.MainFileName = newName;
+                save();
+            }
+            catch(IOException e1)
+            {
+                e1.printStackTrace();
+            }
+        } else
         {
-            e1.printStackTrace();
+            System.out.println("Not Renaming Anything");
         }
         ifNoSaves();
     }
 
     public void setSavesComboBox()
     {
-        String adDir = System.getenv("APPDATA");
-        String pathToSaves = adDir + "\\RapIDE\\saves";
-
-        File savesFolder = new File(pathToSaves);
+        File savesFolder = new File(Strings.pathToSaves);
         File[] listOfFiles = savesFolder.listFiles();
 
         if(listOfFiles != null)
