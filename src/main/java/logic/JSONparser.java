@@ -33,14 +33,6 @@ public class JSONparser extends MainFrame
             {
                 rhymeList.addElement(SLrtrn);
             }
-            /*else if(Score < 200)
-            {
-                rhymeList.addElement("No");
-                rhymeList.addElement("Rhyming");
-                rhymeList.addElement("Words");
-
-                break;
-            }*/
         }
     }
 }

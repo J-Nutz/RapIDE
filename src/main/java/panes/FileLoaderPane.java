@@ -13,41 +13,71 @@ import static logic.ReadingSaveFile.readingSavedFile;
 
 public class FileLoaderPane extends JOptionPane
 {
-    public static String selectedSave;
-
-    File savesFolder = new File(Strings.pathToSaves);
-    File[] listOfFiles = savesFolder.listFiles();
-    Object[] result = new Object[listOfFiles.length];
-    int i = 0;
+    public static JComboBox<Object> savesComboBox = new JComboBox<>();
+    public static JDialog loaderDialog;
 
     public FileLoaderPane()
     {
+        Object[] jopContent = {"Choose File To Load", savesComboBox};
+
+        JOptionPane loaderPane = new JOptionPane();
+        loaderPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
+        loaderPane.setMessage(jopContent);
+
+        setSavesComboBox();
+
+        loaderDialog = loaderPane.createDialog(null, "File Deleter");
+        loaderDialog.setVisible(true);
+
+        closeIfNoSaves();
+
+        String selectedSave = savesComboBox.getSelectedItem().toString();
+
+        if(loaderPane.getValue().equals(0))
+        {
+            readingSavedFile(selectedSave);
+            Strings.MainFileName = selectedSave;
+        }
+        else
+        {
+            System.out.println("Canceled Loading");
+        }
+    }
+
+    public static void setSavesComboBox()
+    {
+        savesComboBox.removeAllItems();
+
+        File savesFolder = new File(Strings.pathToSaves);
+        File[] listOfFiles = savesFolder.listFiles();
+
         if(listOfFiles != null)
         {
             for(File file : listOfFiles)
             {
                 if(file.isFile())
                 {
-                    result[i] = file.getName();
-                    i++;
+                    savesComboBox.addItem(file.getName());
                 }
                 else if(file.isDirectory())
                 {
-                    System.out.println("Fucked M8");
+                    System.out.println("No Files");
                 }
             }
         }
+    }
 
-        Object selectedValue = JOptionPane.showInputDialog(null,
-            "Choose File To Load", "File Loader",
-            JOptionPane.PLAIN_MESSAGE, null,
-            result, result[0]);
+    public static boolean closeIfNoSaves()
+    {
+        boolean empty = false;
 
-        if(selectedValue != null)
+        if(savesComboBox.getItemCount() == 0)
         {
-            selectedSave = selectedValue.toString();
-            readingSavedFile(selectedSave);
-            Strings.MainFileName = selectedSave;
+            empty = true;
+            SwingUtilities.invokeLater(FileCreatorPane::new);
+            loaderDialog.dispose();
         }
+
+        return empty;
     }
 }

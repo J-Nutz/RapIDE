@@ -27,7 +27,6 @@ public class FileCreatorPane extends JOptionPane
         else
         {
             mTextArea.setText("");
-
             Strings.MainFileName = FileName;
 
             try

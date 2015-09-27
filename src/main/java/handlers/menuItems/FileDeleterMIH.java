@@ -6,14 +6,10 @@ package handlers.menuItems;
 
 import frames.MainFrame;
 import panes.FileDeleterPane;
-import panes.FileLoaderPane;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
-
-import static panes.FileDeleterPane.savesComboBox;
-import static panes.FileDeleterPane.setSavesComboBox;
 
 public class FileDeleterMIH extends MainFrame
 {
@@ -27,15 +23,16 @@ public class FileDeleterMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            setSavesComboBox();
+            /*setSavesComboBox();
             if(savesComboBox.getItemCount() > 0)
-            {
+            {*/
                 SwingUtilities.invokeLater(FileDeleterPane::new);
-            } else
+           /* }
+            else
             {
                 SwingUtilities.invokeLater(FileLoaderPane::new);
                 System.out.println("No Files...");
-            }
+            }*/
         }
 
         @Override

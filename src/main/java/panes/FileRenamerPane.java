@@ -5,7 +5,6 @@ package panes;
  */
 
 import local.Strings;
-import logic.ReadingSaveFile;
 
 import javax.swing.*;
 import java.io.File;
@@ -19,37 +18,29 @@ import static logic.Saving.save;
 
 public class FileRenamerPane
 {
-
-    public static JComboBox<Object> savesComboBox;
-    public static JTextField newNameTF;
+    public static JComboBox<Object> savesComboBox = new JComboBox<>();
+    public static JTextField newNameTF = new JTextField("Enter New Name");
     public static JDialog renameDialog;
     public static String selectedSave;
     public static String newName;
 
     public FileRenamerPane()
     {
-        savesComboBox = new JComboBox<>();
+        ifNoSaves();
         setSavesComboBox();
-
-        newNameTF = new JTextField("Enter New Name");
 
         Object[] jopContent = {"Choose File To Rename", savesComboBox, "Enter New Name Of File", newNameTF};
 
         JOptionPane renamerPane = new JOptionPane();
+        renamerPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
         renamerPane.setMessage(jopContent);
 
         renameDialog = renamerPane.createDialog(null, "File Renamer");
         renameDialog.setVisible(true);
 
-        Object selectedSaveObj = savesComboBox.getSelectedItem();
+        selectedSave = savesComboBox.getSelectedItem().toString();
 
-        selectedSave = selectedSaveObj.toString();
-
-        ReadingSaveFile.readingSavedFile(selectedSave);
-
-        String adDir = System.getenv("APPDATA");
-        String pathToSaves = adDir + "\\RapIDE\\saves\\" + selectedSave;
-        Path mPath = FileSystems.getDefault().getPath(pathToSaves);
+        Path mPath = FileSystems.getDefault().getPath(Strings.pathToSaves + selectedSave);
 
         newName = newNameTF.getText();
 
@@ -60,16 +51,17 @@ public class FileRenamerPane
                 Files.move(mPath, mPath.resolveSibling(removeBannedChars(newName)));
                 Strings.MainFileName = newName;
                 save();
+                ifNoSaves();
             }
             catch(IOException e1)
             {
                 e1.printStackTrace();
             }
-        } else
+        }
+        else
         {
             System.out.println("Not Renaming Anything");
         }
-        ifNoSaves();
     }
 
     public void setSavesComboBox()

@@ -5,7 +5,7 @@ Created By Jonah on 8/16/15
 
 Project: RapIDE
 
-Release Version: UR
+Version: 0.0.8.b
 -----------------------------------------------
 |||||||||||||||||||||||||||||||||||||||||||||||
 -----------------------------------------------
@@ -16,39 +16,22 @@ Notes:
 -----------------------------------------------
 Add:
     - Make manual
-    - Come up with version convention
-        - First Release:
-            - Replace all frames with OptionPanes
-            - Optimize
-            - L&F
-
-            Version 0.0.8.b
+       - First Release:
+          - Optimize
+          - L&F
 
     - Needs huge cleanup
-    - Button under SL List to clear list and get new search??
+
     - Settings
         - Color changer
         - How many SL words to add to list
         - Save automatically?? Every 5m, 10m, 30m, 1h? (Currently Saves On Close)
         - Font Changer, Font, Style, Size
 
-    - New Saving Logic *DONE*
     - Instead of JMenu use buttons?
 
-Tomorrow:
-    - Add key features
-    - Optimize (After Features)
-
-One Week:
-    - Have First Releasable Build
-
-Eventually:
-    - Pretty Everything Up
-
 Bugs:
-    - Can't rename file after renaming it once *Fixed*
-    - File list doesn't update on file delete *Fixed*
-    - Renaming file then saving it with key binding, saves as original name *Might Be Fixed*
+    -
 
 ------------------------------------------------
 ||||||||||||||||||||||||||||||||||||||||||||||||

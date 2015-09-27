@@ -13,7 +13,6 @@ public class RemoveChars
         {
             wordToEdit = wordToEdit.replace("" + charToRemove, "");
         }
-
         return wordToEdit;
     }
 }

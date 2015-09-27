@@ -4,9 +4,9 @@ package panes;
  * Created by Jonah on 9/15/2015.
  */
 
-import logic.APIhitter;
-
 import javax.swing.*;
+
+import static logic.APIhitter.hitAPI;
 
 public class RhymingWordsPane extends JOptionPane
 {
@@ -16,13 +16,13 @@ public class RhymingWordsPane extends JOptionPane
     {
         wordToParse = JOptionPane.showInputDialog("Enter Word To Get Rhyming Words");
 
-        if(wordToParse == null)
+        if(wordToParse != null)
         {
-            System.out.println("Da Faq?");
+            hitAPI(wordToParse);
         }
         else
         {
-            APIhitter.hitAPI(wordToParse);
+            System.out.println("No Word Entered");
         }
     }
 }

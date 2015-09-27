@@ -144,16 +144,15 @@ public class MainFrame extends JFrame
         mMenuBar.setBackground(Color.white);
 
         //Menu Item Shenanigans
-        ImageIcon saveIcon = new ImageIcon("C:\\Users\\Jonah\\Desktop\\saveLogo.png");
-        mSave.setIcon(saveIcon);
+        //ImageIcon saveIcon = new ImageIcon("C:\\Users\\Jonah\\Desktop\\saveLogo.png");
+        //mSave.setIcon(saveIcon);
 
         //TextArea Shenanigans
         mTextArea.setLineWrap(true);
         mTextArea.setWrapStyleWord(true);
         mTextArea.setBackground(mpColor);
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
-        mTextArea.setBorder(BorderFactory.createCompoundBorder(border,
-                BorderFactory.createEmptyBorder(5, 5, 5, 5)));
+        mTextArea.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         mTextArea.setFont(new Font("Courier New", Font.PLAIN, 16));
 
         //RhymeList Shenanigans
@@ -221,9 +220,8 @@ public class MainFrame extends JFrame
                 catch(IOException e)
                 {
                     e.printStackTrace();
-                    System.out.println("I Cwash...");
+                    System.out.println("I Cwashed...");
                 }
-
             }
         });
     }

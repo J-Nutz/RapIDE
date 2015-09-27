@@ -8,40 +8,32 @@ import frames.MainFrame;
 import local.Strings;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
 
-public class FileDeleterPane implements ActionListener
+public class FileDeleterPane
 {
     public static JComboBox<Object> savesComboBox = new JComboBox<>();
     public static JDialog deleterDialog;
-    public static JButton cancelBtn = new JButton("Cancel");
 
     public FileDeleterPane()
     {
+        closeIfNoSaves();
         setSavesComboBox();
 
         Object[] jopContent = {"Choose File To Delete", savesComboBox};
 
-        JOptionPane deleterPane = new JOptionPane(JOptionPane.OK_CANCEL_OPTION);
+        JOptionPane deleterPane = new JOptionPane();
         deleterPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
         deleterPane.setMessage(jopContent);
 
         final JDialog deleterDialog = deleterPane.createDialog(null, "File Deleter");
         deleterDialog.setVisible(true);
 
-        closeIfNoSaves();
-
         if(deleterPane.getValue().equals(0))
         {
             deleteFile(savesComboBox.getSelectedItem());
-        } else
-        {
-            System.out.println("Exited Without Deleting File");
+            closeIfNoSaves();
         }
-
-        cancelBtn.addActionListener(this);
     }
 
     public static void setSavesComboBox()
@@ -61,7 +53,7 @@ public class FileDeleterPane implements ActionListener
                 }
                 else if(file.isDirectory())
                 {
-                    System.out.println("No Files");
+                    System.out.println("Folder In Saves");
                 }
             }
         }
@@ -96,7 +88,8 @@ public class FileDeleterPane implements ActionListener
                 if(closeIfNoSaves())
                 {
                     System.out.println("Closing, No Saves");
-                } else
+                }
+                else
                 {
                     SwingUtilities.invokeLater(FileLoaderPane::new);
                 }
@@ -106,12 +99,5 @@ public class FileDeleterPane implements ActionListener
         {
             System.out.println("Error: " + de);
         }
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e)
-    {
-        System.out.println("Closing Deleter");
-        deleterDialog.setVisible(false);
     }
 }

@@ -29,7 +29,7 @@ public class FolderCreator
 
         if (!Files.exists(adDirPath))
         {
-            System.out.println("FolderCreator: Folder Not Created");
+            System.out.println("Folder Not Created");
         }
     }
 }
