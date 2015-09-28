@@ -9,6 +9,7 @@ import panes.FileLoaderPane;
 
 import javax.swing.*;
 import javax.swing.border.Border;
+import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.awt.*;
 import java.io.IOException;
 
@@ -47,9 +48,9 @@ public class MainFrame extends JFrame
 
     public static String[] defaultList = {"Press", "The", "Sounds", "Like", "Button", "To", "Search", "For", "List",
                                           "Of", "Words", "That", "Sound", "Similar", "To", "Each", "Other"};
-
     public MainFrame()
     {
+
         //New Stuff
         mPanel = new JPanel();
 
@@ -187,7 +188,7 @@ public class MainFrame extends JFrame
 
     private static void lookAndFeel()
     {
-        /*SynthLookAndFeel laf = new SynthLookAndFeel();
+        SynthLookAndFeel laf = new SynthLookAndFeel();
         try
         {
             laf.load(MainFrame.class.getResourceAsStream("SynthLAF.RapIDE.xml"), MainFrame.class);
@@ -203,7 +204,7 @@ public class MainFrame extends JFrame
         catch (UnsupportedLookAndFeelException e)
         {
             e.printStackTrace();
-        }*/
+        }
     }
 
     public void beforeExit()
@@ -220,7 +221,6 @@ public class MainFrame extends JFrame
                 catch(IOException e)
                 {
                     e.printStackTrace();
-                    System.out.println("I Cwashed...");
                 }
             }
         });
