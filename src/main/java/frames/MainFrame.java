@@ -9,7 +9,6 @@ import panes.FileLoaderPane;
 
 import javax.swing.*;
 import javax.swing.border.Border;
-import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.awt.*;
 import java.io.IOException;
 
@@ -188,7 +187,7 @@ public class MainFrame extends JFrame
 
     private static void lookAndFeel()
     {
-        SynthLookAndFeel laf = new SynthLookAndFeel();
+        /*SynthLookAndFeel laf = new SynthLookAndFeel();
         try
         {
             laf.load(MainFrame.class.getResourceAsStream("SynthLAF.RapIDE.xml"), MainFrame.class);
@@ -204,7 +203,7 @@ public class MainFrame extends JFrame
         catch (UnsupportedLookAndFeelException e)
         {
             e.printStackTrace();
-        }
+        }*/
     }
 
     public void beforeExit()
