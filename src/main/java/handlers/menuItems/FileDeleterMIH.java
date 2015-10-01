@@ -23,16 +23,7 @@ public class FileDeleterMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            /*setSavesComboBox();
-            if(savesComboBox.getItemCount() > 0)
-            {*/
-                SwingUtilities.invokeLater(FileDeleterPane::new);
-           /* }
-            else
-            {
-                SwingUtilities.invokeLater(FileLoaderPane::new);
-                System.out.println("No Files...");
-            }*/
+            SwingUtilities.invokeLater(FileDeleterPane::new);
         }
 
         @Override

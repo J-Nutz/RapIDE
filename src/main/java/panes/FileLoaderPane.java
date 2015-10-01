@@ -37,6 +37,7 @@ public class FileLoaderPane extends JOptionPane
         {
             readingSavedFile(selectedSave);
             Strings.MainFileName = selectedSave;
+            System.out.println(selectedSave + " File Loaded");
         }
         else
         {

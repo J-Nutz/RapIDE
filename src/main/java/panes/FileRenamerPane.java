@@ -7,6 +7,8 @@ package panes;
 import local.Strings;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.FileSystems;
@@ -26,14 +28,24 @@ public class FileRenamerPane
 
     public FileRenamerPane()
     {
-        ifNoSaves();
         setSavesComboBox();
+        ifNoSaves();
 
         Object[] jopContent = {"Choose File To Rename", savesComboBox, "Enter New Name Of File", newNameTF};
 
         JOptionPane renamerPane = new JOptionPane();
         renamerPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
         renamerPane.setMessage(jopContent);
+
+        newNameTF.addMouseListener(new MouseAdapter()
+        {
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                super.mouseClicked(e);
+                newNameTF.setText("");
+            }
+        });
 
         renameDialog = renamerPane.createDialog(null, "File Renamer");
         renameDialog.setVisible(true);
@@ -49,7 +61,9 @@ public class FileRenamerPane
             try
             {
                 Files.move(mPath, mPath.resolveSibling(removeBannedChars(newName)));
+                setSavesComboBox();
                 Strings.MainFileName = newName;
+                newNameTF.setText("Enter New Name");
                 save();
                 ifNoSaves();
             }
@@ -66,6 +80,8 @@ public class FileRenamerPane
 
     public void setSavesComboBox()
     {
+        savesComboBox.removeAllItems();
+
         File savesFolder = new File(Strings.pathToSaves);
         File[] listOfFiles = savesFolder.listFiles();
 

@@ -7,27 +7,48 @@ package panes;
 import local.Strings;
 
 import javax.swing.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 
 import static frames.MainFrame.mTextArea;
 import static logic.Saving.save;
 
-public class FileCreatorPane extends JOptionPane
+public class FileCreatorPane
 {
-    public static String FileName;
+    public static JTextField newNameTF = new JTextField("Enter New Name");
+    public static JDialog creatorDialog;
+    public static String newName;
 
     public FileCreatorPane()
     {
-        FileName = JOptionPane.showInputDialog("Enter Name Of New File");
+        Object[] jopContent = {"Enter New Name Of File", newNameTF};
 
-        if(FileName == null)
+        JOptionPane creatorPane = new JOptionPane();
+        creatorPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
+        creatorPane.setMessage(jopContent);
+
+        newNameTF.addMouseListener(new MouseAdapter()
         {
-            System.out.println("No File Name Entered");
-        }
-        else
+            @Override
+            public void mouseClicked(MouseEvent e)
+            {
+                super.mouseClicked(e);
+                newNameTF.setText("");
+            }
+        });
+
+        creatorDialog = creatorPane.createDialog(null, "File Creator");
+        creatorDialog.setVisible(true);
+
+        newName = newNameTF.getText();
+
+        if(creatorPane.getValue().equals(0))
         {
+            creatorDialog.dispose();
             mTextArea.setText("");
-            Strings.MainFileName = FileName;
+            Strings.MainFileName = newName;
+            newNameTF.setText("Enter New Name");
 
             try
             {
@@ -37,6 +58,9 @@ public class FileCreatorPane extends JOptionPane
             {
                 e.printStackTrace();
             }
+        } else
+        {
+            System.out.println("Not Renaming Anything");
         }
     }
 }

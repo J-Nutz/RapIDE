@@ -14,25 +14,32 @@ public class FileDeleterPane
 {
     public static JComboBox<Object> savesComboBox = new JComboBox<>();
     public static JDialog deleterDialog;
+    public static JOptionPane deleterPane = new JOptionPane();
 
     public FileDeleterPane()
     {
-        closeIfNoSaves();
         setSavesComboBox();
+        closeIfNoSaves();
 
         Object[] jopContent = {"Choose File To Delete", savesComboBox};
 
-        JOptionPane deleterPane = new JOptionPane();
         deleterPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
         deleterPane.setMessage(jopContent);
 
-        final JDialog deleterDialog = deleterPane.createDialog(null, "File Deleter");
+        JDialog deleterDialog = deleterPane.createDialog(null, "File Deleter");
         deleterDialog.setVisible(true);
 
         if(deleterPane.getValue().equals(0))
         {
             deleteFile(savesComboBox.getSelectedItem());
-            closeIfNoSaves();
+
+            if(savesComboBox.getItemCount() > 0)
+            {
+                SwingUtilities.invokeLater(FileLoaderPane::new);
+            } else
+            {
+                SwingUtilities.invokeLater(FileCreatorPane::new);
+            }
         }
     }
 
@@ -61,13 +68,19 @@ public class FileDeleterPane
 
     public static boolean closeIfNoSaves()
     {
-        boolean empty = false;
+        boolean empty;
+
+        setSavesComboBox();
 
         if(savesComboBox.getItemCount() == 0)
         {
             empty = true;
-            SwingUtilities.invokeLater(FileCreatorPane::new);
             deleterDialog.dispose();
+            SwingUtilities.invokeLater(FileCreatorPane::new);
+        } else
+        {
+            System.out.println("Not Closing, Still Saves");
+            empty = false;
         }
 
         return empty;
@@ -85,19 +98,11 @@ public class FileDeleterPane
                 System.out.println(toDelete + " File Deleted");
                 setSavesComboBox();
                 Strings.MainFileName = null;
-                if(closeIfNoSaves())
-                {
-                    System.out.println("Closing, No Saves");
-                }
-                else
-                {
-                    SwingUtilities.invokeLater(FileLoaderPane::new);
-                }
             }
         }
         catch(Exception de)
         {
-            System.out.println("Error: " + de);
+            System.out.println("DeleterPane Error: " + de);
         }
     }
 }
