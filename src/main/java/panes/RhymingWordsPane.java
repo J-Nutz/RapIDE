@@ -8,7 +8,7 @@ import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-import static logic.APIhitter.hitAPI;
+import static logic.XmlApiHitter.hitXmlAPI;
 
 public class RhymingWordsPane extends JOptionPane
 {
@@ -43,7 +43,8 @@ public class RhymingWordsPane extends JOptionPane
         {
             rhymingWordTF.setText("Enter Word");
             rhymingDialog.dispose();
-            hitAPI(wordToParse);
+            //hitAPI(wordToParse);
+            hitXmlAPI(wordToParse);
         }
         else
         {
