@@ -26,7 +26,7 @@ public class APIhitter
     {
         try
         {
-            //slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=3");  //API #1
+            //slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=50");  //API #1
             slAPI = new URL("http://rhymebrain.com/talk?function=getRhymes&word=" + SLinput + "&maxResults=50"); //API #2
         }
         catch (MalformedURLException e)
@@ -58,7 +58,7 @@ public class APIhitter
             while ((inputLine = APIreader.readLine()) != null)
             {
                 toInput = toInput + inputLine; //Use if using API #2
-                //parseJSON(inputLine)  //Use if using API #1
+                //parseJSON(inputLine);  //Use if using API #1
             }
             try
             {

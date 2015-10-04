@@ -23,6 +23,7 @@ public class RhymingWordsPane extends JOptionPane
         JOptionPane creatorPane = new JOptionPane();
         creatorPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
         creatorPane.setMessage(jopContent);
+        rhymingDialog = creatorPane.createDialog(null, "Rhyme Retriever");
 
         rhymingWordTF.addMouseListener(new MouseAdapter()
         {
@@ -34,7 +35,6 @@ public class RhymingWordsPane extends JOptionPane
             }
         });
 
-        rhymingDialog = creatorPane.createDialog(null, "Rhyme Getter");
         rhymingDialog.setVisible(true);
 
         wordToParse = rhymingWordTF.getText();

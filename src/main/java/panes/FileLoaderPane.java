@@ -26,7 +26,7 @@ public class FileLoaderPane extends JOptionPane
 
         setSavesComboBox();
 
-        loaderDialog = loaderPane.createDialog(null, "File Deleter");
+        loaderDialog = loaderPane.createDialog(null, "File Loader");
         loaderDialog.setVisible(true);
 
         closeIfNoSaves();

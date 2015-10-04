@@ -36,7 +36,8 @@ public class FileDeleterPane
             if(savesComboBox.getItemCount() > 0)
             {
                 SwingUtilities.invokeLater(FileLoaderPane::new);
-            } else
+            }
+            else
             {
                 SwingUtilities.invokeLater(FileCreatorPane::new);
             }
@@ -77,7 +78,8 @@ public class FileDeleterPane
             empty = true;
             deleterDialog.dispose();
             SwingUtilities.invokeLater(FileCreatorPane::new);
-        } else
+        }
+        else
         {
             System.out.println("Not Closing, Still Saves");
             empty = false;

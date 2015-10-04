@@ -2,7 +2,8 @@ package frames;
 
 import handlers.keyBindings.HookKB;
 import handlers.keyBindings.SavingKB;
-import handlers.menuItems.*;
+import handlers.menus.*;
+import handlers.menus.menuItems.settings.FontMIH;
 import panes.FileCreatorPane;
 import panes.FileDeleterPane;
 import panes.FileLoaderPane;
@@ -10,6 +11,8 @@ import panes.FileLoaderPane;
 import javax.swing.*;
 import javax.swing.border.Border;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.io.IOException;
 
 import static logic.FolderCreator.createFolders;
@@ -36,6 +39,8 @@ public class MainFrame extends JFrame
     public static JMenu mSave;
     public static JMenu mOpenFile;
     public static JMenu mRenameFile;
+    public static JMenu mSettings;
+    public static JMenuItem sFont;
 
     private JButton rlClearBtn;
 
@@ -63,6 +68,8 @@ public class MainFrame extends JFrame
         mSave = new JMenu("Save");
         mOpenFile = new JMenu("Open File");
         mRenameFile = new JMenu("Rename File");
+        mSettings = new JMenu("Settings");
+        sFont = new JMenuItem("Fonts");
 
         rhymeList = new DefaultListModel<>();
         rhymeListDisplay = new JList<>(rhymeList);
@@ -71,7 +78,7 @@ public class MainFrame extends JFrame
 
         rlClearBtn = new JButton("Clear Rhyming Words");
 
-        long startTime = System.nanoTime();
+        //long startTime = System.nanoTime();
 
         //Pre Init
         createFolders();
@@ -79,12 +86,14 @@ public class MainFrame extends JFrame
         //Init
         createView();
 
-        FileCreatorMIH.FNMIH();
-        SoundsLikeMIH.SLMIH();
-        FileDeleterMIH.FDMIH();
-        SavingMIH.SMIH();
-        FileOpenerMIH.FOMIH();
-        FileRenamerMIH.FRMIH();
+        FileCreatorMH.FCMH();
+        SoundsLikeMH.SLMH();
+        FileDeleterMH.FDMH();
+        SavingMH.SMH();
+        FileOpenerMH.FOMH();
+        FileRenamerMH.FRMH();
+
+        FontMIH.FMIH();
 
         HookKB.hookBinding();
         SavingKB.savingBinding();
@@ -97,17 +106,18 @@ public class MainFrame extends JFrame
         if(savesComboBox.getItemCount() > 0)
         {
             SwingUtilities.invokeLater(FileLoaderPane::new);
-        } else
+        }
+        else
         {
             SwingUtilities.invokeLater(FileCreatorPane::new);
         }
 
         beforeExit();
 
-        long endTime = System.nanoTime();
-        long totalTime = (endTime - startTime);
+        //long endTime = System.nanoTime();
+        //long totalTime = (endTime - startTime);
 
-        System.out.println("Loaded In " + totalTime / 1000000 + " Milliseconds");
+        //System.out.println("Loaded In " + totalTime / 1000000 + " Milliseconds");
 
     }
 
@@ -138,10 +148,14 @@ public class MainFrame extends JFrame
         mMenuBar.add(mRenameFile);
         mMenuBar.add(mFileDeleter);
         mMenuBar.add(mSoundsLike);
-
+        mMenuBar.add(mSettings);
+        mSettings.add(sFont);
 
         //MenuBar Shenanigans
         mMenuBar.setBackground(Color.white);
+
+        //Setting Shenanigans
+
 
         //Menu Item Shenanigans
         //ImageIcon saveIcon = new ImageIcon("C:\\Users\\Jonah\\Desktop\\saveLogo.png");
@@ -208,10 +222,10 @@ public class MainFrame extends JFrame
 
     public void beforeExit()
     {
-        addWindowListener(new java.awt.event.WindowAdapter()
+        addWindowListener(new WindowAdapter()
         {
             @Override
-            public void windowClosing(java.awt.event.WindowEvent windowEvent)
+            public void windowClosing(WindowEvent windowEvent)
             {
                 try
                 {

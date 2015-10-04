@@ -1,20 +1,21 @@
-package handlers.menuItems;
+package handlers.menus;
 
 /*
- * Created by Jonah on 8/3/2015.
+ * Created by Jonah on 7/28/2015.
  */
 
-import logic.Saving;
+import frames.MainFrame;
+import panes.RhymingWordsPane;
 
+import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
-import java.io.IOException;
 
-public class SavingMIH extends Saving
+public class SoundsLikeMH
 {
-    public static void SMIH()
+    public static void SLMH()
     {
-        mSave.addMenuListener(new SampleMenuListener());
+        MainFrame.mSoundsLike.addMenuListener(new SampleMenuListener());
     }
 
     public static class SampleMenuListener implements MenuListener
@@ -22,14 +23,7 @@ public class SavingMIH extends Saving
         @Override
         public void menuSelected(MenuEvent e)
         {
-            try
-            {
-                save();
-            }
-            catch(IOException e1)
-            {
-                e1.printStackTrace();
-            }
+            SwingUtilities.invokeLater(RhymingWordsPane::new);
         }
 
         @Override

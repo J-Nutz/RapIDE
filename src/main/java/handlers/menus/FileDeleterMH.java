@@ -1,21 +1,21 @@
-package handlers.menuItems;
+package handlers.menus;
 
 /*
- * Created by Jonah on 7/23/2015.
+ * Created by Jonah on 8/3/2015.
  */
 
 import frames.MainFrame;
-import panes.FileCreatorPane;
+import panes.FileDeleterPane;
 
 import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-public class FileCreatorMIH extends MainFrame
+public class FileDeleterMH extends MainFrame
 {
-    public static void FNMIH()
+    public static void FDMH()
     {
-        mCreateFile.addMenuListener(new SampleMenuListener());
+        mFileDeleter.addMenuListener(new SampleMenuListener());
     }
 
     public static class SampleMenuListener implements MenuListener
@@ -23,7 +23,7 @@ public class FileCreatorMIH extends MainFrame
         @Override
         public void menuSelected(MenuEvent e)
         {
-            SwingUtilities.invokeLater(FileCreatorPane::new);
+            SwingUtilities.invokeLater(FileDeleterPane::new);
         }
 
         @Override

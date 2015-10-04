@@ -26,10 +26,5 @@ public class FolderCreator
         {
             e.printStackTrace();
         }
-
-        if (!Files.exists(adDirPath))
-        {
-            System.out.println("Folder Not Created");
-        }
     }
 }

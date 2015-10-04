@@ -27,6 +27,7 @@ public class FileCreatorPane
         JOptionPane creatorPane = new JOptionPane();
         creatorPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
         creatorPane.setMessage(jopContent);
+        creatorDialog = creatorPane.createDialog(null, "File Creator");
 
         newNameTF.addMouseListener(new MouseAdapter()
         {
@@ -38,7 +39,6 @@ public class FileCreatorPane
             }
         });
 
-        creatorDialog = creatorPane.createDialog(null, "File Creator");
         creatorDialog.setVisible(true);
 
         newName = newNameTF.getText();
@@ -58,7 +58,9 @@ public class FileCreatorPane
             {
                 e.printStackTrace();
             }
-        } else
+
+        }
+        else
         {
             System.out.println("Not Renaming Anything");
         }

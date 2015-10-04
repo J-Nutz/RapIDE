@@ -1,4 +1,4 @@
-package handlers.menuItems;
+package handlers.menus;
 
 /*
  * Created by Jonah on 8/20/2015.
@@ -11,9 +11,9 @@ import javax.swing.*;
 import javax.swing.event.MenuEvent;
 import javax.swing.event.MenuListener;
 
-public class FileRenamerMIH extends MainFrame
+public class FileRenamerMH extends MainFrame
 {
-    public static void FRMIH()
+    public static void FRMH()
     {
         mRenameFile.addMenuListener(new SampleMenuListener());
     }

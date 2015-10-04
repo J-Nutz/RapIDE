@@ -36,6 +36,7 @@ public class FileRenamerPane
         JOptionPane renamerPane = new JOptionPane();
         renamerPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
         renamerPane.setMessage(jopContent);
+        renameDialog = renamerPane.createDialog(null, "File Renamer");
 
         newNameTF.addMouseListener(new MouseAdapter()
         {
@@ -47,7 +48,6 @@ public class FileRenamerPane
             }
         });
 
-        renameDialog = renamerPane.createDialog(null, "File Renamer");
         renameDialog.setVisible(true);
 
         selectedSave = savesComboBox.getSelectedItem().toString();
