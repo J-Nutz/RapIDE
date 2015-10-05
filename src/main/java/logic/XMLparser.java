@@ -1,4 +1,6 @@
-package logic;/*
+package logic;
+
+/*
  * Created by Jonah on 10/2/2015.
  */
 

@@ -54,7 +54,6 @@ public class MainFrame extends JFrame
                                           "Of", "Words", "That", "Sound", "Similar", "To", "Each", "Other"};
     public MainFrame()
     {
-
         //New Stuff
         mPanel = new JPanel();
 

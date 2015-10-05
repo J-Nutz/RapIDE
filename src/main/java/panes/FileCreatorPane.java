@@ -58,7 +58,6 @@ public class FileCreatorPane
             {
                 e.printStackTrace();
             }
-
         }
         else
         {

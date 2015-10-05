@@ -11,7 +11,7 @@ import java.io.File;
 
 import static logic.ReadingSaveFile.readingSavedFile;
 
-public class FileLoaderPane extends JOptionPane
+public class FileLoaderPane
 {
     public static JComboBox<Object> savesComboBox = new JComboBox<>();
     public static JDialog loaderDialog;

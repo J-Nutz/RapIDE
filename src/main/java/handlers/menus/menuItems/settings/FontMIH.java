@@ -5,7 +5,9 @@ package handlers.menus.menuItems.settings;
  */
 
 import frames.MainFrame;
+import panes.settingsPanes.SetFontsPane;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -14,7 +16,7 @@ class fontAL implements ActionListener
     @Override
     public void actionPerformed(ActionEvent e)
     {
-        System.out.println("Font Settings Opening");
+        SwingUtilities.invokeLater(SetFontsPane::new);
     }
 }
 
