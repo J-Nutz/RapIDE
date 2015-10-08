@@ -39,9 +39,13 @@ public class FileLoaderPane
             Strings.MainFileName = selectedSave;
             System.out.println(selectedSave + " File Loaded");
         }
+        else if(loaderPane.getValue().equals(2))
+        {
+            SwingUtilities.invokeLater(FileCreatorPane::new);
+        }
         else
         {
-            System.out.println("Canceled Loading");
+            System.out.println("Not Loading Or Creating");
         }
     }
 

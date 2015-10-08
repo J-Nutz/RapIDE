@@ -167,6 +167,7 @@ public class MainFrame extends JFrame
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         mTextArea.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         mTextArea.setFont(new Font("Courier New", Font.PLAIN, 16));
+        //mTextArea.setForeground(Color.yellow);
 
         //RhymeList Shenanigans
         rhymeListDisplay.setFixedCellWidth(125);
