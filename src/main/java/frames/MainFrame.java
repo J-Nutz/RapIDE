@@ -17,6 +17,7 @@ import java.io.IOException;
 
 import static logic.FolderCreator.createFolders;
 import static logic.Saving.save;
+import static logic.SetSettings.setSettings;
 import static panes.FileDeleterPane.savesComboBox;
 
 /*
@@ -80,6 +81,7 @@ public class MainFrame extends JFrame
         //long startTime = System.nanoTime();
 
         //Pre Init
+
         createFolders();
 
         //Init
@@ -110,6 +112,8 @@ public class MainFrame extends JFrame
         {
             SwingUtilities.invokeLater(FileCreatorPane::new);
         }
+
+        setSettings();
 
         beforeExit();
 

@@ -31,6 +31,7 @@ Add:
     - Instead of JMenu use buttons? *May Clash With Settings*
     - Add ability to get definition of words?
     - Figure out way to save settings
+    - Add Bold, Italic etc options to setFontPane
 
 Bugs:
     -

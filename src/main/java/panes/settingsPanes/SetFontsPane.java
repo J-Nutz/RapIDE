@@ -5,9 +5,15 @@ package panes.settingsPanes;
  */
 
 import frames.MainFrame;
+import local.Strings;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.util.Properties;
 
 public class SetFontsPane
 {
@@ -15,11 +21,23 @@ public class SetFontsPane
     public static JComboBox<Integer> fontSizesList;
     public static JComboBox<String> fontColorList;
 
+    public static Properties fontProps = new Properties();
+    public static OutputStream fontPropsOutput = null;
+
     public SetFontsPane()
     {
         fontsList = new JComboBox<>();
         fontSizesList = new JComboBox<>();
         fontColorList = new JComboBox<>();
+
+        try
+        {
+            fontPropsOutput = new FileOutputStream(Strings.pathToProps + "fontProps.properties");
+        }
+        catch(FileNotFoundException e)
+        {
+            e.printStackTrace();
+        }
 
         JOptionPane setFontPane = new JOptionPane(JOptionPane.OK_CANCEL_OPTION);
         JDialog setFontDialog;
@@ -60,6 +78,10 @@ public class SetFontsPane
             MainFrame.mTextArea.setFont(newFont);
 
             getColor();
+
+            String selectedFontSizeS = Integer.toString(selectedFontSize);
+
+            saveFontProps(selectedFont, "Color.blue", selectedFontSizeS);
         }
     }
 
@@ -112,7 +134,7 @@ public class SetFontsPane
                 setColor(Color.yellow);
                 break;
             default:
-                System.out.println("Idk");
+                System.out.println("No Value");
                 break;
         }
     }
@@ -122,4 +144,19 @@ public class SetFontsPane
         MainFrame.mTextArea.setForeground(color);
     }
 
+    public void saveFontProps(String fontType, String fontColor, String fontSize)
+    {
+        fontProps.put("Font Type", fontType);
+        fontProps.put("Font Color", fontColor);
+        fontProps.put("Font Size", fontSize);
+
+        try
+        {
+            fontProps.store(fontPropsOutput, Strings.pathToProps + "fontProps.properties");
+        }
+        catch(IOException e)
+        {
+            e.printStackTrace();
+        }
+    }
 }

@@ -21,10 +21,14 @@ public class FolderCreator
         File xmlFTP = new File(Strings.pathToXML);
         Path xmlPath = xmlFTP.toPath();
 
+        File propFTP = new File(Strings.pathToProps);
+        Path propPath = propFTP.toPath();
+
         try
         {
             Files.createDirectories(savesPath);
             Files.createDirectories(xmlPath);
+            Files.createDirectories(propPath);
         }
         catch (IOException e)
         {
