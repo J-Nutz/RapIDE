@@ -80,8 +80,7 @@ public class SetFontsPane
             getColor();
 
             String selectedFontSizeS = Integer.toString(selectedFontSize);
-
-            saveFontProps(selectedFont, "Color.blue", selectedFontSizeS);
+            saveFontProps(selectedFont, selectedFontSizeS);
         }
     }
 
@@ -95,43 +94,43 @@ public class SetFontsPane
                 System.out.println("No Items In Font Color List");
                 break;
             case 0:
-                setColor(Color.black);
+                setColor(Color.black, "black");
                 break;
             case 1:
-                setColor(Color.blue);
+                setColor(Color.blue, "blue");
                 break;
             case 2:
-                setColor(Color.cyan);
+                setColor(Color.cyan, "cyan");
                 break;
             case 3:
-                setColor(Color.darkGray);
+                setColor(Color.darkGray, "darkGray");
                 break;
             case 4:
-                setColor(Color.gray);
+                setColor(Color.gray, "gray");
                 break;
             case 5:
-                setColor(Color.green);
+                setColor(Color.green, "green");
                 break;
             case 6:
-                setColor(Color.lightGray);
+                setColor(Color.lightGray, "lightGray");
                 break;
             case 7:
-                setColor(Color.magenta);
+                setColor(Color.magenta, "magenta");
                 break;
             case 8:
-                setColor(Color.orange);
+                setColor(Color.orange, "orange");
                 break;
             case 9:
-                setColor(Color.pink);
+                setColor(Color.pink, "pink");
                 break;
             case 10:
-                setColor(Color.red);
+                setColor(Color.red, "red");
                 break;
             case 11:
-                setColor(Color.white);
+                setColor(Color.white, "white");
                 break;
             case 12:
-                setColor(Color.yellow);
+                setColor(Color.yellow, "yellow");
                 break;
             default:
                 System.out.println("No Value");
@@ -139,15 +138,15 @@ public class SetFontsPane
         }
     }
 
-    public static void setColor(Color color)
+    public static void setColor(Color color, String colorAsString)
     {
         MainFrame.mTextArea.setForeground(color);
+        fontProps.put("Font Color", colorAsString);
     }
 
-    public void saveFontProps(String fontType, String fontColor, String fontSize)
+    public void saveFontProps(String fontType, String fontSize)
     {
         fontProps.put("Font Type", fontType);
-        fontProps.put("Font Color", fontColor);
         fontProps.put("Font Size", fontSize);
 
         try

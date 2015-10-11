@@ -5,9 +5,8 @@ import local.Strings;
 
 import java.awt.*;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
+import java.lang.reflect.Field;
 import java.util.Properties;
 
 /*
@@ -17,7 +16,6 @@ import java.util.Properties;
 public class SetSettings
 {
     public static Properties fontProps = new Properties();
-    public static InputStream fontInput = null;
 
     public static void setSettings()
     {
@@ -28,36 +26,30 @@ public class SetSettings
     {
         try
         {
-            fontInput = new FileInputStream(Strings.pathToProps + "fontProps.properties");
+            fontProps.load(new FileInputStream(Strings.pathToProps + "fontProps.properties"));
 
             String savedFontType = fontProps.getProperty("Font Type");
             String savedFontColor = fontProps.getProperty("Font Color");
-            String toParseInt = fontProps.getProperty("Font Size");
-            int savedFontSize = Integer.parseInt(toParseInt);
+            int savedFontSize = Integer.parseInt(fontProps.getProperty("Font Size"));
 
-            System.out.println(savedFontColor);
+            try
+            {
+                final Field f = Color.class.getField(savedFontColor);
 
-            Font savedFont = new Font(savedFontType, Font.PLAIN, savedFontSize);
-            MainFrame.mTextArea.setFont(savedFont);
-            //MainFrame.mTextArea.setForeground();
+                Color savedColor = (Color) f.get(null);
+                Font savedFont = new Font(savedFontType, Font.PLAIN, savedFontSize);
+
+                MainFrame.mTextArea.setForeground(savedColor);
+                MainFrame.mTextArea.setFont(savedFont);
+            }
+            catch(NoSuchFieldException | IllegalAccessException e)
+            {
+                e.printStackTrace();
+            }
         }
-        catch(FileNotFoundException e)
+        catch(IOException e)
         {
             e.printStackTrace();
-        }
-        finally
-        {
-            if(fontInput != null)
-            {
-                try
-                {
-                    fontInput.close();
-                }
-                catch(IOException e)
-                {
-                    e.printStackTrace();
-                }
-            }
         }
     }
 }
