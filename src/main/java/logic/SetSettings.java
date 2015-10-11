@@ -35,7 +35,7 @@ public class SetSettings
             String toParseInt = fontProps.getProperty("Font Size");
             int savedFontSize = Integer.parseInt(toParseInt);
 
-            //System.out.println(savedFontColor);
+            System.out.println(savedFontColor);
 
             Font savedFont = new Font(savedFontType, Font.PLAIN, savedFontSize);
             MainFrame.mTextArea.setFont(savedFont);
