@@ -28,16 +28,16 @@ public class SetSettings
         {
             fontProps.load(new FileInputStream(Strings.pathToProps + "fontProps.properties"));
 
-            String savedFontType = fontProps.getProperty("Font Type");
-            String savedFontColor = fontProps.getProperty("Font Color");
-            int savedFontSize = Integer.parseInt(fontProps.getProperty("Font Size"));
+            String savedFontType = fontProps.getProperty("Font Type", "Courier New");
+            String savedFontColor = fontProps.getProperty("Font Color", "black");
+            int savedFontSize = Integer.parseInt(fontProps.getProperty("Font Size", "16"));
 
             try
             {
                 final Field f = Color.class.getField(savedFontColor);
 
                 Color savedColor = (Color) f.get(null);
-                Font savedFont = new Font(savedFontType, Font.PLAIN, savedFontSize);
+                Font savedFont = new Font(savedFontType, 0, savedFontSize);
 
                 MainFrame.mTextArea.setForeground(savedColor);
                 MainFrame.mTextArea.setFont(savedFont);

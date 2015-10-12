@@ -6,12 +6,10 @@ package local;
 
 public class Strings
 {
-
     public static String adDir = System.getenv("APPDATA");
     public static String pathToSaves = adDir + "\\RapIDE\\saves\\";
     public static String pathToXML = adDir + "\\RapIDE\\XML\\";
     public static String pathToProps = adDir + "\\RapIDE\\Props\\";
 
     public static String MainFileName;
-
 }
