@@ -24,13 +24,13 @@ Add:
 
     - Settings
         - Color changer
-        - How many SL words to add to list
+        - How many SL words to add to list *ADDED ?*
         - Save automatically?? Every 5m, 10m, 30m, 1h? (Currently Saves On Close)
-        - Font Changer, Font, Style, Size
+        - Font Changer, Font, Style, Size *ADDED*
 
     - Instead of JMenu use buttons? *May Clash With Settings*
     - Add ability to get definition of words?
-    - Figure out way to save settings
+    - Figure out way to save settings *DONE*
     - Add Bold, Italic etc options to setFontPane
 
 Bugs:

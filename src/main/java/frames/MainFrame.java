@@ -4,6 +4,7 @@ import handlers.keyBindings.HookKB;
 import handlers.keyBindings.SavingKB;
 import handlers.menus.*;
 import handlers.menus.menuItems.settings.FontMIH;
+import handlers.menus.menuItems.settings.RhymingWordsMIH;
 import panes.FileCreatorPane;
 import panes.FileDeleterPane;
 import panes.FileLoaderPane;
@@ -42,6 +43,7 @@ public class MainFrame extends JFrame
     public static JMenu mRenameFile;
     public static JMenu mSettings;
     public static JMenuItem sFont;
+    public static JMenuItem sRhymingWords;
 
     private JButton rlClearBtn;
 
@@ -70,6 +72,7 @@ public class MainFrame extends JFrame
         mRenameFile = new JMenu("Rename File");
         mSettings = new JMenu("Settings");
         sFont = new JMenuItem("Fonts");
+        sRhymingWords = new JMenuItem("Rhyming Words");
 
         rhymeList = new DefaultListModel<>();
         rhymeListDisplay = new JList<>(rhymeList);
@@ -95,6 +98,7 @@ public class MainFrame extends JFrame
         FileRenamerMH.FRMH();
 
         FontMIH.FMIH();
+        RhymingWordsMIH.RWMIH();
 
         HookKB.hookBinding();
         SavingKB.savingBinding();
@@ -153,6 +157,7 @@ public class MainFrame extends JFrame
         mMenuBar.add(mSoundsLike);
         mMenuBar.add(mSettings);
         mSettings.add(sFont);
+        mSettings.add(sRhymingWords);
 
         //MenuBar Shenanigans
         mMenuBar.setBackground(Color.white);
