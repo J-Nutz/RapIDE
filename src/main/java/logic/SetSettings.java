@@ -31,13 +31,15 @@ public class SetSettings
             String savedFontType = fontProps.getProperty("Font Type", "Courier New");
             String savedFontColor = fontProps.getProperty("Font Color", "black");
             int savedFontSize = Integer.parseInt(fontProps.getProperty("Font Size", "16"));
+            int savedFontStyle = Integer.parseInt(fontProps.getProperty("Font Style", "0"));
 
             try
             {
                 final Field f = Color.class.getField(savedFontColor);
 
                 Color savedColor = (Color) f.get(null);
-                Font savedFont = new Font(savedFontType, 0, savedFontSize);
+                //noinspection MagicConstant
+                Font savedFont = new Font(savedFontType, savedFontStyle, savedFontSize);
 
                 MainFrame.mTextArea.setForeground(savedColor);
                 MainFrame.mTextArea.setFont(savedFont);

@@ -20,6 +20,7 @@ public class SetFontsPane
     public static JComboBox<String> fontsList;
     public static JComboBox<Integer> fontSizesList;
     public static JComboBox<String> fontColorList;
+    public static JComboBox<String> fontStyleList;
 
     public static Properties fontProps = new Properties();
     public static OutputStream fontPropsOutput = null;
@@ -29,6 +30,7 @@ public class SetFontsPane
         fontsList = new JComboBox<>();
         fontSizesList = new JComboBox<>();
         fontColorList = new JComboBox<>();
+        fontStyleList = new JComboBox<>();
 
         try
         {
@@ -48,6 +50,12 @@ public class SetFontsPane
             fontsList.addItem(aFontsList);
         }
 
+        String fontStyles[] = {"Plain", "Bold", "Italic"};
+        for(String aFontStyles : fontStyles)
+        {
+            fontStyleList.addItem(aFontStyles);
+        }
+
         int fontSizes[] = {10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 36, 42, 48};
         for(int aFontSizes : fontSizes)
         {
@@ -61,8 +69,8 @@ public class SetFontsPane
             fontColorList.addItem(aColors);
         }
 
-        Object[] fontContents = {"Choose Font", SetFontsPane.fontsList, "Choose Font Size", fontSizesList,
-                "Choose Font Color", fontColorList};
+        Object[] fontContents = {"Choose Font", SetFontsPane.fontsList, "Choose Font Style", fontStyleList,
+                "Choose Font Size", fontSizesList, "Choose Font Color", fontColorList,};
 
         setFontPane.setMessage(fontContents);
         setFontPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
@@ -72,8 +80,10 @@ public class SetFontsPane
         if(setFontPane.getValue().equals(0))
         {
             int selectedFontSize = (Integer) fontSizesList.getSelectedItem();
+            int selectedFontStyle = getStyle();
             String selectedFont = fontsList.getSelectedItem().toString();
-            Font newFont = new Font(selectedFont, Font.PLAIN, selectedFontSize);
+            //noinspection MagicConstant
+            Font newFont = new Font(selectedFont, selectedFontStyle, selectedFontSize);
 
             MainFrame.mTextArea.setFont(newFont);
 
@@ -142,6 +152,31 @@ public class SetFontsPane
     {
         MainFrame.mTextArea.setForeground(color);
         fontProps.put("Font Color", colorAsString);
+    }
+
+    public static int getStyle()
+    {
+        String selectedStyle = fontStyleList.getSelectedItem().toString();
+        int selectedStyleInt = 0;
+
+        switch(selectedStyle)
+        {
+            case "Plain":
+                selectedStyleInt = 0;
+                break;
+            case "Bold":
+                selectedStyleInt = 1;
+                break;
+            case "Italic":
+                selectedStyleInt = 2;
+                break;
+            default:
+                break;
+        }
+
+        String fontStyle = Integer.toString(selectedStyleInt);
+        fontProps.put("Font Style", fontStyle);
+        return selectedStyleInt;
     }
 
     public void saveFontProps(String fontType, String fontSize)

@@ -2,8 +2,7 @@ version '0.0.9.a'
 
 apply plugin: 'java'
 
-//noinspection GroovyUnusedAssignment
-sourceCompatibility = 8
+//sourceCompatibility = 1.7
 
 repositories {
     mavenCentral()
