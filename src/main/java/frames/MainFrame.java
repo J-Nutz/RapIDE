@@ -3,6 +3,7 @@ package frames;
 import handlers.keyBindings.HookKB;
 import handlers.keyBindings.SavingKB;
 import handlers.menus.*;
+import handlers.menus.menuItems.settings.AppearanceMIH;
 import handlers.menus.menuItems.settings.FontMIH;
 import handlers.menus.menuItems.settings.RhymingWordsMIH;
 import panes.FileCreatorPane;
@@ -18,7 +19,7 @@ import java.io.IOException;
 
 import static logic.FolderCreator.createFolders;
 import static logic.Saving.save;
-import static logic.SetSettings.setSettings;
+import static logic.setters.SettingsSetter.setSettings;
 import static panes.FileDeleterPane.savesComboBox;
 
 /*
@@ -28,7 +29,7 @@ import static panes.FileDeleterPane.savesComboBox;
 public class MainFrame extends JFrame
 {
     //Declarations
-    private JPanel mPanel;
+    public static JPanel mPanel;
 
     private JList<String> rhymeListDisplay;
 
@@ -44,6 +45,7 @@ public class MainFrame extends JFrame
     public static JMenu mSettings;
     public static JMenuItem sFont;
     public static JMenuItem sRhymingWords;
+    public static JMenuItem sColors;
 
     private JButton rlClearBtn;
 
@@ -73,6 +75,7 @@ public class MainFrame extends JFrame
         mSettings = new JMenu("Settings");
         sFont = new JMenuItem("Fonts");
         sRhymingWords = new JMenuItem("Rhyming Words");
+        sColors = new JMenuItem("Appearance");
 
         rhymeList = new DefaultListModel<>();
         rhymeListDisplay = new JList<>(rhymeList);
@@ -99,6 +102,7 @@ public class MainFrame extends JFrame
 
         FontMIH.FMIH();
         RhymingWordsMIH.RWMIH();
+        AppearanceMIH.AMIH();
 
         HookKB.hookBinding();
         SavingKB.savingBinding();
@@ -158,6 +162,7 @@ public class MainFrame extends JFrame
         mMenuBar.add(mSettings);
         mSettings.add(sFont);
         mSettings.add(sRhymingWords);
+        mSettings.add(sColors);
 
         //MenuBar Shenanigans
         mMenuBar.setBackground(Color.white);
@@ -229,7 +234,7 @@ public class MainFrame extends JFrame
         }*/
     }
 
-    public void beforeExit()
+    private void beforeExit()
     {
         addWindowListener(new WindowAdapter()
         {

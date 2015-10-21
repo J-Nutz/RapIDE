@@ -6,6 +6,7 @@ package panes.settingsPanes;
 
 import frames.MainFrame;
 import local.Strings;
+import logic.setters.ColorSetter;
 
 import javax.swing.*;
 import java.awt.*;
@@ -69,7 +70,7 @@ public class SetFontsPane
             fontColorList.addItem(aColors);
         }
 
-        Object[] fontContents = {"Choose Font", SetFontsPane.fontsList, "Choose Font Style", fontStyleList,
+        Object[] fontContents = {"Choose Font", fontsList, "Choose Font Style", fontStyleList,
                 "Choose Font Size", fontSizesList, "Choose Font Color", fontColorList,};
 
         setFontPane.setMessage(fontContents);
@@ -87,71 +88,15 @@ public class SetFontsPane
 
             MainFrame.mTextArea.setFont(newFont);
 
-            getColor();
+            //getColor();
+            int fontIndex = fontColorList.getSelectedIndex();
+            ColorSetter setFont = new ColorSetter();
+            setFont.getColor(fontIndex, MainFrame.mTextArea, "Font Color", fontProps, 2);
+
 
             String selectedFontSizeS = Integer.toString(selectedFontSize);
             saveFontProps(selectedFont, selectedFontSizeS);
         }
-    }
-
-    public static void getColor()
-    {
-        int selectedColorIndex = fontColorList.getSelectedIndex();
-
-        switch(selectedColorIndex)
-        {
-            case -1:
-                System.out.println("No Items In Font Color List");
-                break;
-            case 0:
-                setColor(Color.black, "black");
-                break;
-            case 1:
-                setColor(Color.blue, "blue");
-                break;
-            case 2:
-                setColor(Color.cyan, "cyan");
-                break;
-            case 3:
-                setColor(Color.darkGray, "darkGray");
-                break;
-            case 4:
-                setColor(Color.gray, "gray");
-                break;
-            case 5:
-                setColor(Color.green, "green");
-                break;
-            case 6:
-                setColor(Color.lightGray, "lightGray");
-                break;
-            case 7:
-                setColor(Color.magenta, "magenta");
-                break;
-            case 8:
-                setColor(Color.orange, "orange");
-                break;
-            case 9:
-                setColor(Color.pink, "pink");
-                break;
-            case 10:
-                setColor(Color.red, "red");
-                break;
-            case 11:
-                setColor(Color.white, "white");
-                break;
-            case 12:
-                setColor(Color.yellow, "yellow");
-                break;
-            default:
-                System.out.println("No Value");
-                break;
-        }
-    }
-
-    public static void setColor(Color color, String colorAsString)
-    {
-        MainFrame.mTextArea.setForeground(color);
-        fontProps.put("Font Color", colorAsString);
     }
 
     public static int getStyle()

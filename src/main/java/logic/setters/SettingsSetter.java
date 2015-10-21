@@ -1,4 +1,4 @@
-package logic;
+package logic.setters;
 
 import frames.MainFrame;
 import local.Strings;
@@ -13,9 +13,10 @@ import java.util.Properties;
  * Created by Jonah on 10/9/2015.
  */
 
-public class SetSettings
+public class SettingsSetter
 {
     public static Properties fontProps = new Properties();
+    public static Properties colorProps = new Properties();
 
     public static void setSettings()
     {
@@ -48,6 +49,28 @@ public class SetSettings
             {
                 e.printStackTrace();
             }
+
+            try
+            {
+                colorProps.load(new FileInputStream(Strings.pathToProps + "appearanceProps.properties"));
+
+                String savedBackgroundColor = colorProps.getProperty("Background Color", "gray");
+                String savedBorderColor = colorProps.getProperty("Border Color", "gray");
+
+                final Field f = Color.class.getField(savedBackgroundColor);
+                final Field f1 = Color.class.getField(savedBorderColor);
+
+                Color newBackgroundColor = (Color) f.get(null);
+                Color newBorderColor = (Color) f1.get(null);
+
+                MainFrame.mTextArea.setBackground(newBackgroundColor);
+                MainFrame.mPanel.setBackground(newBorderColor);
+            }
+            catch(NoSuchFieldException | IllegalAccessException e)
+            {
+                e.printStackTrace();
+            }
+
         }
         catch(IOException e)
         {
