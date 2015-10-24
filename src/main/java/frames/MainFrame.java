@@ -31,11 +31,11 @@ public class MainFrame extends JFrame
     //Declarations
     public static JPanel mPanel;
 
-    private JList<String> rhymeListDisplay;
+    public static JList<String> rhymeListDisplay;
 
     public static JTextArea mTextArea;
 
-    private JMenuBar mMenuBar;
+    public static JMenuBar mMenuBar;
     public static JMenu mCreateFile;
     public static JMenu mSoundsLike;
     public static JMenu mFileDeleter;
@@ -52,8 +52,6 @@ public class MainFrame extends JFrame
     public static DefaultListModel<String> rhymeList;
 
     public JScrollPane slScrollPane;
-
-    public static Color mpColor = new Color(88, 88, 88);
 
     public static String[] defaultList = {"Press", "The", "Sounds", "Like", "Button", "To", "Search", "For", "List",
                                           "Of", "Words", "That", "Sound", "Similar", "To", "Each", "Other"};
@@ -134,20 +132,24 @@ public class MainFrame extends JFrame
 
     private void createView()
     {
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Image mIcon = toolkit.getImage("C:\\Users\\Jonah\\Desktop\\RIDE.png"); //Get Better Image
+
         //Main Frame
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setExtendedState(Frame.MAXIMIZED_BOTH);
         setLocationRelativeTo(null);
         setTitle("Rap IDE");
+        setIconImage(mIcon);
 
         //Main Panel
-        mPanel.setBackground(mpColor);
+        mPanel.setBackground(Color.darkGray);
         mPanel.setLayout(new BorderLayout(5, 5));
 
         //Add Everything
         getContentPane().add(mPanel);
         mPanel.add(mMenuBar, BorderLayout.PAGE_START);
-        mPanel.add(Box.createHorizontalStrut(1), BorderLayout.LINE_START);
+        //mPanel.add(Box.createHorizontalStrut(1), BorderLayout.LINE_START);
         mPanel.add(mTextArea, BorderLayout.CENTER);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
@@ -166,9 +168,7 @@ public class MainFrame extends JFrame
 
         //MenuBar Shenanigans
         mMenuBar.setBackground(Color.white);
-
-        //Setting Shenanigans
-
+        mMenuBar.setBorderPainted(false);
 
         //Menu Item Shenanigans
         //ImageIcon saveIcon = new ImageIcon("C:\\Users\\Jonah\\Desktop\\saveLogo.png");
@@ -177,7 +177,7 @@ public class MainFrame extends JFrame
         //TextArea Shenanigans
         mTextArea.setLineWrap(true);
         mTextArea.setWrapStyleWord(true);
-        mTextArea.setBackground(mpColor);
+        mTextArea.setBackground(Color.darkGray);
         Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         mTextArea.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         mTextArea.setFont(new Font("Courier New", Font.PLAIN, 16));
@@ -207,9 +207,9 @@ public class MainFrame extends JFrame
 
     public static void setInitialRhymeList()
     {
-        for(String r : defaultList)
+        for(String rhyme : defaultList)
         {
-            rhymeList.addElement(r);
+            rhymeList.addElement(rhyme);
         }
     }
 

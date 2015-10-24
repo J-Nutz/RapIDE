@@ -22,11 +22,15 @@ public class SetAppearancePane
 
     public static JComboBox<String> backgroundColorList;
     public static JComboBox<String> borderColorList;
+    public static JComboBox<String> rwBackgroundColorList;
+    public static JComboBox<String> menuColorList;
 
     public SetAppearancePane()
     {
         backgroundColorList = new JComboBox<>();
         borderColorList = new JComboBox<>();
+        rwBackgroundColorList = new JComboBox<>();
+        menuColorList = new JComboBox<>();
 
         try
         {
@@ -46,9 +50,12 @@ public class SetAppearancePane
         {
             backgroundColorList.addItem(aColors);
             borderColorList.addItem(aColors);
+            rwBackgroundColorList.addItem(aColors);
+            menuColorList.addItem(aColors);
         }
 
-        Object[] fontContents = {"Choose Background Color", backgroundColorList, "Choose Border Color", borderColorList};
+        Object[] fontContents = {"Choose Background Color", backgroundColorList, "Choose Border Color", borderColorList,
+                "Choose Rhyming Words Color", rwBackgroundColorList, "Choose Menu Bar Color", menuColorList};
 
         setFontPane.setMessage(fontContents);
         setFontPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
@@ -64,6 +71,14 @@ public class SetAppearancePane
             int bordIndex = borderColorList.getSelectedIndex();
             ColorSetter setBorder = new ColorSetter();
             setBorder.getColor(bordIndex, MainFrame.mPanel, "Border Color", colorProps, 1);
+
+            int rwIndex = rwBackgroundColorList.getSelectedIndex();
+            ColorSetter setRW = new ColorSetter();
+            setRW.getColor(rwIndex, MainFrame.rhymeListDisplay, "RW Color", colorProps, 1);
+
+            int menuIndex = menuColorList.getSelectedIndex();
+            ColorSetter setMenu = new ColorSetter();
+            setMenu.getColor(menuIndex, MainFrame.mMenuBar, "Menu Color", colorProps, 1);
 
             try
             {

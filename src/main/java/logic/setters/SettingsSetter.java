@@ -56,15 +56,23 @@ public class SettingsSetter
 
                 String savedBackgroundColor = colorProps.getProperty("Background Color", "gray");
                 String savedBorderColor = colorProps.getProperty("Border Color", "gray");
+                String savedRWColor = colorProps.getProperty("RW Color", "gray");
+                String savedMenuColor = colorProps.getProperty("Menu Color", "white");
 
                 final Field f = Color.class.getField(savedBackgroundColor);
                 final Field f1 = Color.class.getField(savedBorderColor);
+                final Field f2 = Color.class.getField(savedRWColor);
+                final Field f3 = Color.class.getField(savedMenuColor);
 
                 Color newBackgroundColor = (Color) f.get(null);
                 Color newBorderColor = (Color) f1.get(null);
+                Color newRWColor = (Color) f2.get(null);
+                Color newMenuColor = (Color) f3.get(null);
 
                 MainFrame.mTextArea.setBackground(newBackgroundColor);
                 MainFrame.mPanel.setBackground(newBorderColor);
+                MainFrame.rhymeListDisplay.setBackground(newRWColor);
+                MainFrame.mMenuBar.setBackground(newMenuColor);
             }
             catch(NoSuchFieldException | IllegalAccessException e)
             {
