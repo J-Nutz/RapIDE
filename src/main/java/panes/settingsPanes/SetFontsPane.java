@@ -45,19 +45,12 @@ public class SetFontsPane
         JOptionPane setFontPane = new JOptionPane(JOptionPane.OK_CANCEL_OPTION);
         JDialog setFontDialog;
 
-        long startTime = System.nanoTime();
-
         GraphicsEnvironment GE = GraphicsEnvironment.getLocalGraphicsEnvironment();
         String fonts[] = GE.getAvailableFontFamilyNames();
         for(String aFontsList : fonts)
         {
             fontsList.addItem(aFontsList);
         }
-
-        long endTime = System.nanoTime();
-        long totalTime = (endTime - startTime);
-
-        System.out.println("Loaded Fonts In " + totalTime / 1000000 + " Milliseconds");
 
         String fontStyles[] = {"Plain", "Bold", "Italic"};
         for(String aFontStyles : fontStyles)
