@@ -4,6 +4,8 @@ package logic.setters;
  * Created by Jonah on 10/21/2015.
  */
 
+import frames.MainFrame;
+
 import java.awt.*;
 import java.util.Properties;
 
@@ -11,7 +13,6 @@ public class ColorSetter
 {
     public void getColor(int index, Component component, String key, Properties properties, int backOrFore)
     {
-
         switch(index)
         {
             case -1:
@@ -71,9 +72,18 @@ public class ColorSetter
         else if(backOrFore == 2)
         {
             component.setForeground(color);
-        }
+            MainFrame.mSettings.setForeground(color);
 
+            Component[] components = {MainFrame.mCreateFile, MainFrame.mSoundsLike, MainFrame.mFileDeleter,
+                    MainFrame.mSave, MainFrame.mOpenFile, MainFrame.mRenameFile, MainFrame.mSettings,
+                    MainFrame.sColors, MainFrame.sRhymingWords, MainFrame.sFont};
+
+            for(Component aComponent : components)
+            {
+                aComponent.setForeground(color);
+            }
+            MainFrame.rhymeListDisplay.setForeground(color);
+        }
         properties.put(key, colorString);
     }
-
 }

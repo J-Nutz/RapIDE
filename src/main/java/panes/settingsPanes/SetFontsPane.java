@@ -83,19 +83,18 @@ public class SetFontsPane
         {
             int selectedFontSize = (Integer) fontSizesList.getSelectedItem();
             int selectedFontStyle = getStyle();
+
             String selectedFont = fontsList.getSelectedItem().toString();
+            String selectedFontSizeS = Integer.toString(selectedFontSize);
+
             //noinspection MagicConstant
             Font newFont = new Font(selectedFont, selectedFontStyle, selectedFontSize);
-
             MainFrame.mTextArea.setFont(newFont);
 
-            //getColor();
             int fontIndex = fontColorList.getSelectedIndex();
             ColorSetter setFont = new ColorSetter();
             setFont.getColor(fontIndex, MainFrame.mTextArea, "Font Color", fontProps, 2);
 
-
-            String selectedFontSizeS = Integer.toString(selectedFontSize);
             saveFontProps(selectedFont, selectedFontSizeS);
         }
     }

@@ -59,7 +59,7 @@ public class SetAppearancePane
 
         setFontPane.setMessage(fontContents);
         setFontPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
-        setFontDialog = setFontPane.createDialog(null, "Font Settings");
+        setFontDialog = setFontPane.createDialog(null, "Appearance Settings");
         setFontDialog.setVisible(true);
 
         if(setFontPane.getValue().equals(0))

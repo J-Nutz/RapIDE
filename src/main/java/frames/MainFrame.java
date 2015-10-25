@@ -35,6 +35,8 @@ public class MainFrame extends JFrame
 
     public static JTextArea mTextArea;
 
+    public static JSeparator separator;
+
     public static JMenuBar mMenuBar;
     public static JMenu mCreateFile;
     public static JMenu mSoundsLike;
@@ -61,6 +63,8 @@ public class MainFrame extends JFrame
         mPanel = new JPanel();
 
         mTextArea = new JTextArea();
+
+        separator = new JSeparator(SwingConstants.VERTICAL);
 
         mMenuBar = new JMenuBar();
 
@@ -133,7 +137,7 @@ public class MainFrame extends JFrame
     private void createView()
     {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image mIcon = toolkit.getImage("C:\\Users\\Jonah\\Desktop\\RIDE.png"); //Get Better Image
+        Image mIcon = toolkit.getImage("C:\\Users\\Jonah\\Desktop\\RapIDELogo.png"); //Get Better Image
 
         //Main Frame
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -149,21 +153,35 @@ public class MainFrame extends JFrame
         //Add Everything
         getContentPane().add(mPanel);
         mPanel.add(mMenuBar, BorderLayout.PAGE_START);
-        //mPanel.add(Box.createHorizontalStrut(1), BorderLayout.LINE_START);
+        mPanel.add(Box.createHorizontalStrut(1), BorderLayout.LINE_START);
         mPanel.add(mTextArea, BorderLayout.CENTER);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
         mPanel.add(rlClearBtn, BorderLayout.PAGE_END);
 
+        Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
+        Border border2 = BorderFactory.createMatteBorder(2, 1, 2, 1, Color.BLACK);
+        separator.setPreferredSize(new Dimension(2, 2));
+
         mMenuBar.add(mSave);
+        mSave.setBorder(border2);
+        mSave.add(new JSeparator(SwingConstants.VERTICAL));
         mMenuBar.add(mOpenFile);
+        mOpenFile.setBorder(border2);
         mMenuBar.add(mCreateFile);
+        mCreateFile.setBorder(border2);
         mMenuBar.add(mRenameFile);
+        mRenameFile.setBorder(border2);
         mMenuBar.add(mFileDeleter);
+        mFileDeleter.setBorder(border2);
         mMenuBar.add(mSoundsLike);
+        mSoundsLike.setBorder(border2);
         mMenuBar.add(mSettings);
+        mSettings.setBorder(border2);
         mSettings.add(sFont);
+        mSettings.addSeparator();
         mSettings.add(sRhymingWords);
+        mSettings.addSeparator();
         mSettings.add(sColors);
 
         //MenuBar Shenanigans
@@ -178,7 +196,6 @@ public class MainFrame extends JFrame
         mTextArea.setLineWrap(true);
         mTextArea.setWrapStyleWord(true);
         mTextArea.setBackground(Color.darkGray);
-        Border border = BorderFactory.createLineBorder(Color.BLACK, 2);
         mTextArea.setBorder(BorderFactory.createCompoundBorder(border, BorderFactory.createEmptyBorder(5, 5, 5, 5)));
         mTextArea.setFont(new Font("Courier New", Font.PLAIN, 16));
         mTextArea.setForeground(Color.black);

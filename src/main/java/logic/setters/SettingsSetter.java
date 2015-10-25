@@ -21,6 +21,7 @@ public class SettingsSetter
     public static void setSettings()
     {
         setFontSettings();
+        setAppearanceSettings();
     }
 
     public static void setFontSettings()
@@ -34,53 +35,58 @@ public class SettingsSetter
             int savedFontSize = Integer.parseInt(fontProps.getProperty("Font Size", "16"));
             int savedFontStyle = Integer.parseInt(fontProps.getProperty("Font Style", "0"));
 
-            try
+            final Field f = Color.class.getField(savedFontColor);
+
+            Color newFontColor = (Color) f.get(null);
+            //noinspection MagicConstant
+            Font savedFont = new Font(savedFontType, savedFontStyle, savedFontSize);
+
+            Component[] components = {MainFrame.mCreateFile, MainFrame.mSoundsLike, MainFrame.mFileDeleter,
+                    MainFrame.mSave, MainFrame.mOpenFile, MainFrame.mRenameFile, MainFrame.mSettings,
+                    MainFrame.sColors, MainFrame.sRhymingWords, MainFrame.sFont};
+
+            for(Component aComponent : components)
             {
-                final Field f = Color.class.getField(savedFontColor);
-
-                Color savedColor = (Color) f.get(null);
-                //noinspection MagicConstant
-                Font savedFont = new Font(savedFontType, savedFontStyle, savedFontSize);
-
-                MainFrame.mTextArea.setForeground(savedColor);
-                MainFrame.mTextArea.setFont(savedFont);
+                aComponent.setForeground(newFontColor);
             }
-            catch(NoSuchFieldException | IllegalAccessException e)
-            {
-                e.printStackTrace();
-            }
+            MainFrame.rhymeListDisplay.setForeground(newFontColor);
 
-            try
-            {
-                colorProps.load(new FileInputStream(Strings.pathToProps + "appearanceProps.properties"));
-
-                String savedBackgroundColor = colorProps.getProperty("Background Color", "gray");
-                String savedBorderColor = colorProps.getProperty("Border Color", "gray");
-                String savedRWColor = colorProps.getProperty("RW Color", "gray");
-                String savedMenuColor = colorProps.getProperty("Menu Color", "white");
-
-                final Field f = Color.class.getField(savedBackgroundColor);
-                final Field f1 = Color.class.getField(savedBorderColor);
-                final Field f2 = Color.class.getField(savedRWColor);
-                final Field f3 = Color.class.getField(savedMenuColor);
-
-                Color newBackgroundColor = (Color) f.get(null);
-                Color newBorderColor = (Color) f1.get(null);
-                Color newRWColor = (Color) f2.get(null);
-                Color newMenuColor = (Color) f3.get(null);
-
-                MainFrame.mTextArea.setBackground(newBackgroundColor);
-                MainFrame.mPanel.setBackground(newBorderColor);
-                MainFrame.rhymeListDisplay.setBackground(newRWColor);
-                MainFrame.mMenuBar.setBackground(newMenuColor);
-            }
-            catch(NoSuchFieldException | IllegalAccessException e)
-            {
-                e.printStackTrace();
-            }
-
+            MainFrame.mTextArea.setForeground(newFontColor);
+            MainFrame.mTextArea.setFont(savedFont);
         }
-        catch(IOException e)
+        catch(IOException | IllegalAccessException | NoSuchFieldException e)
+        {
+            e.printStackTrace();
+        }
+    }
+
+    public static void setAppearanceSettings()
+    {
+        try
+        {
+            colorProps.load(new FileInputStream(Strings.pathToProps + "appearanceProps.properties"));
+
+            String savedBackgroundColor = colorProps.getProperty("Background Color", "gray");
+            String savedBorderColor = colorProps.getProperty("Border Color", "gray");
+            String savedRWColor = colorProps.getProperty("RW Color", "gray");
+            String savedMenuColor = colorProps.getProperty("Menu Color", "white");
+
+            final Field f = Color.class.getField(savedBackgroundColor);
+            final Field f1 = Color.class.getField(savedBorderColor);
+            final Field f2 = Color.class.getField(savedRWColor);
+            final Field f3 = Color.class.getField(savedMenuColor);
+
+            Color newBackgroundColor = (Color) f.get(null);
+            Color newBorderColor = (Color) f1.get(null);
+            Color newRWColor = (Color) f2.get(null);
+            Color newMenuColor = (Color) f3.get(null);
+
+            MainFrame.mTextArea.setBackground(newBackgroundColor);
+            MainFrame.mPanel.setBackground(newBorderColor);
+            MainFrame.rhymeListDisplay.setBackground(newRWColor);
+            MainFrame.mMenuBar.setBackground(newMenuColor);
+        }
+        catch(NoSuchFieldException | IllegalAccessException | IOException e)
         {
             e.printStackTrace();
         }
