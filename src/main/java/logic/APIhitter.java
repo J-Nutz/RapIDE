@@ -6,10 +6,7 @@ package logic;
 
 import local.Strings;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
@@ -29,6 +26,8 @@ public class APIhitter
     public static BufferedReader APIreader;
 
     public static Properties rwProps = new Properties();
+
+    public static File xmlFile = new File(Strings.pathToXML + "xmlSave.xml");
 
     public static void loadAPIProps()
     {
@@ -51,9 +50,13 @@ public class APIhitter
 
         try
         {
-            if(api == 1)
+            if(api == 0)
             {
-                slAPI = new URL("http://api.datamuse.com/words?sl=" + SLinput + "&max=" + queries);  //API #1
+                slAPI = new URL("http://www.stands4.com/services/v2/rhymes.php?uid=4396&tokenid=7ok5aFMY8y0i0HP1&term=" + SLinput);
+            }
+            else if(api == 1)
+            {
+                slAPI = new URL("http://api.datamuse.com/words?rel_rhy=" + SLinput + "&max=" + queries);  //API #1
             }
             else if(api == 2)
             {
@@ -90,7 +93,27 @@ public class APIhitter
 
         try
         {
-            if(api == 1)
+            if(api == 0)
+            {
+                XMLparser xmlParser = new XMLparser();
+
+                while((inputLine = APIreader.readLine()) != null)
+                {
+                    toInput = toInput + inputLine;
+                }
+                try
+                {
+                    FileWriter mFileWriter = new FileWriter(new File(Strings.pathToXML, "xmlSave.xml"));
+                    mFileWriter.write(toInput);
+                    mFileWriter.close();
+                    xmlParser.parseXML("result", xmlFile);
+                }
+                catch(IOException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+            else if(api == 1)
             {
                 while((inputLine = APIreader.readLine()) != null)
                 {

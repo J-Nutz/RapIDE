@@ -48,8 +48,11 @@ public class RhymingWordsPane extends JOptionPane
             loadAPIProps();
 
             rhymingWordTF.setText("Enter Word");
-            //rhymingDialog.dispose();
 
+            hitAPI(wordToParse);
+
+            //rhymingDialog.dispose();
+/*
             if(APIhitter.api > 0)
             {
                 hitAPI(wordToParse);
@@ -57,7 +60,7 @@ public class RhymingWordsPane extends JOptionPane
             else if(APIhitter.api == 0)
             {
                 hitXmlAPI(wordToParse);
-            }
+            }*/
         }
         else
         {

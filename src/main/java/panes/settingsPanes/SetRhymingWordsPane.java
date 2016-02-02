@@ -42,7 +42,7 @@ public class SetRhymingWordsPane
 
         Object[] rwContents = {"Choose Which API To Use", apiList, "Choose How Many Results To Get", numOfRWTF};
 
-        String[] apis = {"Datamuse", "Rhymebrain", "Stands4"};
+        String[] apis = {"Stands4", "Datamuse", "Rhymebrain"};
         for(String api : apis)
         {
             apiList.addItem(api);
@@ -61,6 +61,9 @@ public class SetRhymingWordsPane
 
             switch(chosenAPI)
             {
+                case "Stands4":
+                    finalAPI = "0";
+                    break;
                 case "Datamuse":
                     finalAPI = "1";
                     break;
@@ -68,7 +71,7 @@ public class SetRhymingWordsPane
                     finalAPI = "2";
                     break;
                 default:
-                    finalAPI = "0";
+                    finalAPI = "1";
                     break;
             }
 

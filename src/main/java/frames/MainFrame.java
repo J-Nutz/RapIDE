@@ -131,7 +131,6 @@ public class MainFrame extends JFrame
         //long totalTime = (endTime - startTime);
 
         //System.out.println("Loaded In " + totalTime / 1000000 + " Milliseconds");
-
     }
 
     private void createView()

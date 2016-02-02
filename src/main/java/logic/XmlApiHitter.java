@@ -11,8 +11,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
-import static logic.XMLparser.parseXML;
-
 public class XmlApiHitter
 {
     public static String inputLine;
@@ -64,7 +62,7 @@ public class XmlApiHitter
                 mFileWriter.write(toInput);
                 mFileWriter.close();
                 APIreader.close();
-                parseXML();
+                //parseXML();
             }
             catch(IOException e)
             {
