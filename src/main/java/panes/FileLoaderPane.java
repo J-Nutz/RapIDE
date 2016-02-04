@@ -15,21 +15,22 @@ public class FileLoaderPane
 {
     public static JComboBox<Object> savesComboBox = new JComboBox<>();
     public static JDialog loaderDialog;
+    public static JOptionPane loaderPane;
 
     public FileLoaderPane()
     {
         Object[] jopContent = {"Choose File To Load", savesComboBox};
 
-        JOptionPane loaderPane = new JOptionPane();
-        loaderPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
-        loaderPane.setMessage(jopContent);
+            loaderPane = new JOptionPane();
+            loaderPane.setOptionType(JOptionPane.OK_CANCEL_OPTION);
+            loaderPane.setMessage(jopContent);
 
-        setSavesComboBox();
+            setSavesComboBox();
 
-        loaderDialog = loaderPane.createDialog(null, "File Loader");
-        loaderDialog.setVisible(true);
+            loaderDialog = loaderPane.createDialog(null, "File Loader");
+            loaderDialog.setVisible(true);
 
-        closeIfNoSaves();
+            closeIfNoSaves();
 
         String selectedSave = savesComboBox.getSelectedItem().toString();
 

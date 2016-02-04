@@ -52,15 +52,6 @@ public class RhymingWordsPane extends JOptionPane
             hitAPI(wordToParse);
 
             //rhymingDialog.dispose();
-/*
-            if(APIhitter.api > 0)
-            {
-                hitAPI(wordToParse);
-            }
-            else if(APIhitter.api == 0)
-            {
-                hitXmlAPI(wordToParse);
-            }*/
         }
         else
         {
