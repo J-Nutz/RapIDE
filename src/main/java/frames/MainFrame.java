@@ -49,6 +49,7 @@ public class MainFrame extends JFrame
     public static JMenuItem sRhymingWords;
     public static JMenuItem sColors;
 
+    private JPanel bottomPanel;
     private JButton rlClearBtn;
 
     public static DefaultListModel<String> rhymeList;
@@ -61,6 +62,7 @@ public class MainFrame extends JFrame
     {
         //New Stuff
         mPanel = new JPanel();
+        bottomPanel = new JPanel();
 
         mTextArea = new JTextArea();
 
@@ -136,6 +138,8 @@ public class MainFrame extends JFrame
     private void createView()
     {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
         Image mIcon = toolkit.getImage("C:\\Users\\Jonah\\Desktop\\RapIDELogo.png"); //Get Better Image
 
         //Main Frame
@@ -156,8 +160,13 @@ public class MainFrame extends JFrame
         mPanel.add(mTextArea, BorderLayout.CENTER);
         mPanel.add(slScrollPane, BorderLayout.LINE_END);
 
-        mPanel.add(rlClearBtn, BorderLayout.PAGE_END);
+        //Bottom Panel
+        //bottomPanel.setPreferredSize(new Dimension(screenSize.width, 125));
+        //bottomPanel.add(rlClearBtn);
 
+        //mPanel.add(bottomPanel, BorderLayout.SOUTH);
+
+        //Menu Stuff
         Border border = BorderFactory.createLineBorder(Color.BLACK, 1);
         Border border2 = BorderFactory.createMatteBorder(2, 1, 2, 1, Color.BLACK);
         separator.setPreferredSize(new Dimension(2, 2));

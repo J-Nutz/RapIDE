@@ -21,8 +21,6 @@ public class XMLparser
     {
         try
         {
-            //File xmlFile = new File(Strings.pathToXML + "xmlSave.xml");
-
             DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.parse(xml);

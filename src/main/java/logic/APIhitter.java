@@ -126,6 +126,8 @@ public class APIhitter
                 {
                     toInput = toInput + inputLine;
                 }
+
+                parseJSON(toInput);
             }
             else
             {
@@ -133,10 +135,6 @@ public class APIhitter
             }
             try
             {
-                if(api == 2)
-                {
-                    parseJSON(toInput);
-                }
                 APIreader.close();
             }
             catch(IOException e)

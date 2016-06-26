@@ -8,7 +8,7 @@ import frames.MainFrame;
 import local.Strings;
 
 import javax.swing.*;
-import java.io.File;
+import java.io.*;
 
 public class FileDeleterPane
 {

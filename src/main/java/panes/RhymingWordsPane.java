@@ -4,15 +4,12 @@ package panes;
  * Created by Jonah on 9/15/2015.
  */
 
-import logic.APIhitter;
-
 import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import static logic.APIhitter.hitAPI;
 import static logic.APIhitter.loadAPIProps;
-import static logic.XmlApiHitter.hitXmlAPI;
 
 public class RhymingWordsPane extends JOptionPane
 {
@@ -45,13 +42,12 @@ public class RhymingWordsPane extends JOptionPane
 
         if(creatorPane.getValue().equals(0))
         {
-            loadAPIProps();
-
             rhymingWordTF.setText("Enter Word");
-
+            
+            loadAPIProps();
             hitAPI(wordToParse);
 
-            //rhymingDialog.dispose();
+            rhymingDialog.dispose();
         }
         else
         {
